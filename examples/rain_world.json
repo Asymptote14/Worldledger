@@ -1,0 +1,3496 @@
+{
+  "worlds": {
+    "世界": {
+      "name": "世界",
+      "description": "系守町的神社巫女宫水三叶，与东京的少年立花泷在梦中交换身体，被占据的是一整天，醒来时那天的记忆一片空白；黄昏之时两人才能在彗星坑边短暂相见；彗星正一天天逼近小镇。",
+      "law_profile": {
+        "expectation": "系守町的神社巫女宫水三叶，与东京的少年立花泷在梦中交换身体，被占据的是一整天，醒来时那天的记忆一片空白；黄昏之时两人才能在彗星坑边短暂相见；彗星正一天天逼近小镇。",
+        "atmosphere": "夏日·彗星将至",
+        "laws": [
+          {
+            "id": "law-1",
+            "trigger": "有人入睡并交换身体",
+            "effect": "两人在对方身体中醒来，当天记忆模糊，黄昏时恢复",
+            "intensity": 0.5
+          },
+          {
+            "id": "law-2",
+            "trigger": "有人在黄昏时刻呼唤对方名字",
+            "effect": "两人在彗星坑边短暂相见，之后遗忘对方名字",
+            "intensity": 0.5
+          },
+          {
+            "id": "law-3",
+            "trigger": "有人试图改变彗星坠落的历史",
+            "effect": "时间线扰动，记忆与存在出现裂缝",
+            "intensity": 0.5
+          }
+        ],
+        "version": 0
+      },
+      "scenes": {
+        "s-1": {
+          "id": "s-1",
+          "name": "系守町神社",
+          "description": "石阶通向鸟居，风铃轻响。三叶的巫女服挂在檐下，桌面摊开日记本，旁边放着绳结发饰。远处小镇尽收眼底，彗星在黄昏时可见。",
+          "atmosphere": "",
+          "npcs": [],
+          "exits": [
+            "s-2",
+            "s-3"
+          ],
+          "hint": "",
+          "generated": true,
+          "memory_only": false,
+          "recent": [
+            {
+              "turn": 216,
+              "kind": "npc_acted",
+              "summary": "立花泷 主动：立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。"
+            },
+            {
+              "turn": 220,
+              "kind": "daily_life",
+              "summary": "神社石阶下，几个町民聚在一起仰头看天，彗星的尾巴在日光里泛着淡白，有人低声说「今晚怕是更亮」。（系守町神社）"
+            },
+            {
+              "turn": 236,
+              "kind": "daily_life",
+              "summary": "神社石阶下，几个町民拎着买好的菜往回走，有人停下来抬头看了一眼彗星，嘀咕了一声「今晚怕是要更亮」，又低头赶路。（系守町神社）"
+            },
+            {
+              "turn": 237,
+              "kind": "daily_life",
+              "summary": "系守町的杂货店门口，老板娘把白天晒在外面的几把伞收进店里，抬头望了望西边天空那道彗尾，自言自语说「这日头还没落尽呢」。（系守町神社）"
+            },
+            {
+              "turn": 245,
+              "kind": "npc_moved",
+              "summary": "立花泷 从「系守町神社」来到「彗星坑」"
+            },
+            {
+              "turn": 248,
+              "kind": "daily_life",
+              "summary": "神社石阶下，几户人家的灯还亮着，有人在门口张望彗星，又缩回屋里。（系守町神社）"
+            },
+            {
+              "turn": 249,
+              "kind": "daily_life",
+              "summary": "「日记本」又经历了 2 次渐变，最后停在：日记本页角被风翻起又落下，卷曲的边角沾了点石阶上的尘土。（系守町神社）"
+            },
+            {
+              "turn": 250,
+              "kind": "daily_life",
+              "summary": "日记本的页角被夜风吹得更卷了些，沾了点露水（系守町神社）"
+            }
+          ],
+          "items": [
+            {
+              "id": "i-1",
+              "name": "日记本",
+              "note": "日记本的页角被夜风吹得更卷了些，沾了点露水",
+              "last_turn": 250,
+              "cause_turn": 250,
+              "fold": {
+                "start": 4.753799999999998,
+                "count": 1,
+                "last": "日记本的页角被夜风吹得更卷了些，沾了点露水"
+              },
+              "fold_last_turn": 249
+            },
+            {
+              "id": "i-2",
+              "name": "绳结发饰",
+              "note": "三叶母亲的遗物，系着红线",
+              "last_turn": 244
+            }
+          ],
+          "crowd": "神社石阶下，几户人家的灯还亮着，有人在门口张望彗星，又缩回屋里。",
+          "history": [
+            {
+              "memory_id": "m-1-1",
+              "npc": "n-1",
+              "then": "祭典时，妈妈还在",
+              "occurred_clock": -7000.0
+            }
+          ]
+        },
+        "s-2": {
+          "id": "s-2",
+          "name": "东京街区",
+          "description": "东京的清晨，高楼间的电车呼啸而过，阳光在玻璃幕墙上折射出刺眼的光斑。泷的公寓藏在小巷深处，门前的自动贩卖机闪着微光，空气中弥漫着咖啡与早高峰的匆忙气息。",
+          "atmosphere": "喧嚣中的孤寂，彗星将至的预感在空气里微微颤动。",
+          "npcs": [],
+          "exits": [
+            "s-1",
+            "s-3"
+          ],
+          "hint": "高楼密集，电车穿梭，泷的公寓在巷内。",
+          "generated": true,
+          "memory_only": false,
+          "recent": [
+            {
+              "turn": 149,
+              "kind": "action_done",
+              "summary": "立花泷 完成了「三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。」：三叶借着泷的身体在东京街头向路人打听彗星传闻，多人口中提及彗星尾巴指向西北，且有人提到系守町方向的天际出现异常亮光。她确认了彗星坠落的大致方位与日期，但未获得精确坐标。"
+            },
+            {
+              "turn": 151,
+              "kind": "daily_life",
+              "summary": "东京车站的清晨，赶早班车的人流匆匆，几个学生背着书包，边走边抬头看西边天空那颗依旧明亮的彗星。（东京街区）"
+            },
+            {
+              "turn": 152,
+              "kind": "daily_life",
+              "summary": "东京车站的自动贩卖机前，一个上班族投币买罐装咖啡，易拉罐滚落时发出清脆的响声。（东京街区）"
+            },
+            {
+              "turn": 167,
+              "kind": "npc_acted",
+              "summary": "立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星"
+            },
+            {
+              "turn": 172,
+              "kind": "daily_life",
+              "summary": "东京车站的候车厅里，几个赶末班车的乘客低声议论着西边天际那颗异常明亮的彗星，有人开玩笑说它会不会撞上地球。（东京街区）"
+            },
+            {
+              "turn": 182,
+              "kind": "daily_life",
+              "summary": "东京车站的末班车月台上，零星几个乘客匆匆赶路，有人抬头望了一眼西边那颗异常明亮的彗星，又低头继续赶路。（东京街区）"
+            },
+            {
+              "turn": 193,
+              "kind": "npc_moved",
+              "summary": "立花泷 从「东京街区」来到「系守町神社」"
+            },
+            {
+              "turn": 196,
+              "kind": "daily_life",
+              "summary": "末班列车的车厢里，几个乘客靠在椅背上打盹，车窗外的夜色被彗星的光染成淡青色。（东京街区）"
+            }
+          ],
+          "items": [],
+          "crowd": "末班列车的车厢里，几个乘客靠在椅背上打盹，车窗外的夜色被彗星的光染成淡青色。",
+          "history": [
+            {
+              "memory_id": "m-2-1",
+              "npc": "n-2",
+              "then": "桥边，午后阳光",
+              "occurred_clock": -7300.0
+            }
+          ]
+        },
+        "s-3": {
+          "id": "s-3",
+          "name": "彗星坑",
+          "description": "",
+          "atmosphere": "",
+          "npcs": [
+            "n-1",
+            "n-2"
+          ],
+          "exits": [
+            "s-1",
+            "s-2"
+          ],
+          "hint": "圆形凹坑，边缘长满青草，黄昏时分天空泛紫。",
+          "generated": false,
+          "memory_only": false,
+          "recent": [
+            {
+              "turn": 190,
+              "kind": "action_done",
+              "summary": "宫水三叶 完成了「在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久」：三叶在彗星坑边反复摩挲着那块温热的石片，指尖感受着绳结刻痕的纹路，抬头望向西边愈发刺目的彗星光芒。她估算着黄昏还有不到一刻钟，心中那份约定愈发清晰——那石片在掌心微微发烫，像是呼应着什么。"
+            },
+            {
+              "turn": 213,
+              "kind": "npc_acted",
+              "summary": "宫水三叶 主动：彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。"
+            },
+            {
+              "turn": 227,
+              "kind": "action_done",
+              "summary": "宫水三叶 完成了「彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。」：三叶在碎石间找到一块边缘锋利的硬石，蹲下身，在温热的石片上沿着原有的绳结刻痕又深深补了一道。刻痕清晰而用力，像是要把那个名字和约定一起刻进石头里。她直起身，望向西边渐暗的天色，攥紧腕上的绳结。"
+            },
+            {
+              "turn": 229,
+              "kind": "item_changed",
+              "summary": "「刻有绳结刻痕的温热石片」变了：「彗星坑」（绳结刻痕被三叶用硬石加深补刻，痕迹清晰醒目，等待黄昏时被认出）"
+            },
+            {
+              "turn": 231,
+              "kind": "npc_acted",
+              "summary": "宫水三叶 主动：在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现"
+            },
+            {
+              "turn": 238,
+              "kind": "daily_life",
+              "summary": "彗星坑边一丛野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。（彗星坑）"
+            },
+            {
+              "turn": 245,
+              "kind": "npc_moved",
+              "summary": "立花泷 从「系守町神社」来到「彗星坑」"
+            },
+            {
+              "turn": 246,
+              "kind": "action_done",
+              "summary": "立花泷 完成了「立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。」：立花泷顺着日记本的方向，踏上了通往彗星坑的小路。他攥紧夹着绳结发饰的那一页，脚步加快，黄昏的余光正一点点沉向西山。"
+            }
+          ],
+          "items": [
+            {
+              "id": "i-4",
+              "name": "刻有绳结刻痕的温热石片",
+              "note": "绳结刻痕被三叶用硬石加深补刻，痕迹清晰醒目，等待黄昏时被认出",
+              "cause": "动作结局：彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块",
+              "last_turn": 230,
+              "cause_turn": 229,
+              "held_by": "npc:n-1"
+            }
+          ],
+          "crowd": "",
+          "history": []
+        }
+      },
+      "npcs": {
+        "n-1": {
+          "id": "n-1",
+          "name": "宫水三叶",
+          "persona": "系守町神社的巫女，高中女生，渴望离开小镇，性格直率但易害羞。",
+          "traits": {
+            "直率": true,
+            "易害羞": true,
+            "好奇": true
+          },
+          "memories": [
+            {
+              "turn": 1,
+              "content": "我在神社的祭典上跳过舞，妈妈曾把绳结系在我发间。",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-1-1",
+              "occurred_clock": -7000.0,
+              "projections": [
+                {
+                  "age_days": 7000,
+                  "duration_days": null,
+                  "embodied_as": "self",
+                  "accessible": true,
+                  "access_cause": "",
+                  "scene": {
+                    "ref": "s-1",
+                    "name": "系守町神社",
+                    "then": "祭典时，妈妈还在"
+                  },
+                  "items": [
+                    {
+                      "ref": "i-2",
+                      "name": "绳结发饰",
+                      "then": "妈妈亲手系上",
+                      "exists_now": true,
+                      "current_location": "s-1",
+                      "held_by": "n-1",
+                      "current_note": "三叶一直戴着"
+                    }
+                  ],
+                  "current_states": [
+                    {
+                      "text": "怀念母亲，珍惜绳结",
+                      "review_days": null
+                    }
+                  ]
+                }
+              ],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 53,
+              "content": "听说：彗星晨光初现：清晨的天边，彗星拖着淡青色的尾迹，在曦光中隐约可见。小镇的屋顶上，早起的人抬头望见，心里掠过一丝不安。",
+              "importance": 0.6,
+              "keywords": [],
+              "id": "m-53",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 67,
+              "content": "宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏时分的约定。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-67",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 69,
+              "content": "目标「查明交换身体的原因」推进了：宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-69",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 70,
+              "content": "目标「在彗星坠落前拯救小镇」推进了：宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-70",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 85,
+              "content": "我做完了这件事：三叶在彗星坑边拨开碎石，指尖触到一块温热的石片，上面隐约有绳结状的刻痕，与梦中印记吻合。她心头一震，攥紧石片，抬头望向愈发明亮的彗星，黄昏之约的念头更坚定了。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-85",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 127,
+              "content": "宫水三叶 主动：三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-127",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 128,
+              "content": "目标「查明交换身体的原因」推进了：在东京街头向路人打听彗星传闻，可能获得与交换身体相关的线索",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-128",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 129,
+              "content": "目标「在彗星坠落前拯救小镇」推进了：向路人打听彗星坠落的具体日期和地点，为拯救小镇收集信息",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-129",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 150,
+              "content": "我做完了这件事：三叶借着泷的身体在东京街头向路人打听彗星传闻，多人口中提及彗星尾巴指向西北，且有人提到系守町方向的天际出现异常亮光。她确认了彗星坠落的大致方位与日期，但未获得精确坐标。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-150",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 164,
+              "content": "宫水三叶 主动：在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-164",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 166,
+              "content": "目标「在彗星坠落前拯救小镇」推进了：宫水三叶 主动：在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-166",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 191,
+              "content": "我做完了这件事：三叶在彗星坑边反复摩挲着那块温热的石片，指尖感受着绳结刻痕的纹路，抬头望向西边愈发刺目的彗星光芒。她估算着黄昏还有不到一刻钟，心中那份约定愈发清晰——那石片在掌心微微发烫，像是呼应着什么。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-191",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 217,
+              "content": "立花泷 主动：立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-217",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 219,
+              "content": "目标「在彗星坠落前拯救小镇」推进了：立花泷 主动：立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-219",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 247,
+              "content": "我做完了这件事：立花泷顺着日记本的方向，踏上了通往彗星坑的小路。他攥紧夹着绳结发饰的那一页，脚步加快，黄昏的余光正一点点沉向西山。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-247",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            }
+          ],
+          "memory_gaps": [
+            {
+              "id": "gap-n-1-1",
+              "started_clock": 0.2502,
+              "ended_clock": 1.2502,
+              "actor": "n-2",
+              "body": "n-1",
+              "cause": "行动主体映射到期",
+              "source_memory": "agency:n-1:0.250200"
+            },
+            {
+              "id": "gap-n-1-2",
+              "started_clock": 2.2518,
+              "ended_clock": 3.2518,
+              "actor": "n-2",
+              "body": "n-1",
+              "cause": "行动主体映射到期",
+              "source_memory": "agency:n-1:2.251800"
+            }
+          ],
+          "beliefs": [],
+          "goals": [
+            {
+              "id": "g-1",
+              "text": "查明交换身体的原因",
+              "progress": 0.3,
+              "blocked_by": "",
+              "blocked_note": ""
+            },
+            {
+              "id": "g-2",
+              "text": "在彗星坠落前拯救小镇",
+              "progress": 0.4,
+              "blocked_by": "",
+              "blocked_note": ""
+            }
+          ],
+          "relationship": 0,
+          "state": {
+            "location": "s-3",
+            "activity": "在彗星坑边紧紧攥着石片，望着西边渐暗的天色",
+            "mood": "焦灼而坚定",
+            "mood_value": 0.0,
+            "mood_reason": "与玩家的对话：这城里，最近有什么新鲜事吗？",
+            "last_turn": 234,
+            "last_clock": 4.503599999999999,
+            "last_time": "第5天·黄昏",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [
+              {
+                "id": "sf-n-1-1",
+                "text": "怀念母亲，珍惜绳结",
+                "source_memory": "m-1-1",
+                "since_clock": -7000.0,
+                "review_clock": null
+              }
+            ],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "赶到彗星坑，黄昏时与三叶相见",
+              "targets": [
+                "scene:s-3",
+                "npc:n-1"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 235
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        },
+        "n-2": {
+          "id": "n-2",
+          "name": "立花泷",
+          "persona": "东京的高中生，打工兼职，性格坚毅，有点粗心但重情义。",
+          "traits": {
+            "坚毅": true,
+            "粗心": true,
+            "重情义": true
+          },
+          "memories": [
+            {
+              "turn": 2,
+              "content": "我在东京的桥上画过素描，那时的天空很蓝。",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-2-1",
+              "occurred_clock": -7300.0,
+              "projections": [
+                {
+                  "age_days": 7300,
+                  "duration_days": null,
+                  "embodied_as": "self",
+                  "accessible": true,
+                  "access_cause": "",
+                  "scene": {
+                    "ref": "s-2",
+                    "name": "东京街区",
+                    "then": "桥边，午后阳光"
+                  },
+                  "items": [],
+                  "current_states": [
+                    {
+                      "text": "喜欢画画，常带素描本",
+                      "review_days": null
+                    }
+                  ]
+                }
+              ],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 24,
+              "content": "我在等一个忘了名字的人，手里握着红线。",
+              "importance": 0.2,
+              "keywords": [
+                "名字",
+                "红线",
+                "等待"
+              ],
+              "id": "m-24",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 26,
+              "content": "宫水三叶 主动：攥紧绳结发饰，抬眼望向神社外的天空，彗星将至的预感让心口发紧，我决定趁黄昏去彗星坑边看看——那里或许藏着那个名字的线索。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-26",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 28,
+              "content": "目标「找到梦中出现的系守町」推进了：彗星将至的黄昏，我动身前往梦中反复出现的彗星坑，想在那里找到系守町的线索",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-28",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 29,
+              "content": "目标「与三叶重逢」推进了：握着红线等一个忘了名字的人，黄昏的预感让我觉得离重逢更近了一步",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-29",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 41,
+              "content": "我做完了这件事：她攥紧绳结发饰，目光穿过神社外渐暗的天色，彗星将至的预感让胸口发紧。她决定趁黄昏动身前往彗星坑，那里或许藏着那个名字的线索。她将绳结发饰系回手腕，转身朝神社外的山路走去。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-41",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 50,
+              "content": "黄昏的山路尽头，彗星坑在暮色中展开，我攥紧腕上的绳结，仿佛下一秒就能找到那个名字。",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-50",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 72,
+              "content": "立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下定决心要找到去系守町的路。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-72",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 74,
+              "content": "目标「找到梦中出现的系守町」推进了：立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-74",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 75,
+              "content": "目标「与三叶重逢」推进了：立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-75",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 106,
+              "content": "我做完了这件事：立花泷在东京街头反复查看地图，确认了系守町的大致方位，攥紧拳头下定决心——黄昏前必须赶到彗星坑。他收起手机，目光坚定地望向西边天空。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-106",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 168,
+              "content": "立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-168",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 170,
+              "content": "目标「找到梦中出现的系守町」推进了：立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-170",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 171,
+              "content": "目标「与三叶重逢」推进了：立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-171",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 195,
+              "content": "我做完了这件事：末班列车在夜色中一路向西，立花泷望着窗外那颗异常明亮的彗星，攥紧拳头。列车在系守町附近的站台停下，他跳下车，踩着黄昏最后的光线朝彗星坑的方向跑去。他抵达了系守町——那个梦里反复出现的、地图上却找不到的地方。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-195",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-2"
+            },
+            {
+              "turn": 214,
+              "content": "宫水三叶 主动：彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-214",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 228,
+              "content": "我做完了这件事：三叶在碎石间找到一块边缘锋利的硬石，蹲下身，在温热的石片上沿着原有的绳结刻痕又深深补了一道。刻痕清晰而用力，像是要把那个名字和约定一起刻进石头里。她直起身，望向西边渐暗的天色，攥紧腕上的绳结。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-228",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 232,
+              "content": "宫水三叶 主动：在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-232",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            },
+            {
+              "turn": 234,
+              "content": "目标「与三叶重逢」推进了：宫水三叶 主动：在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现",
+              "importance": 0.5,
+              "keywords": [],
+              "id": "m-234",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-1"
+            }
+          ],
+          "memory_gaps": [
+            {
+              "id": "gap-n-2-1",
+              "started_clock": 0.2502,
+              "ended_clock": 1.2502,
+              "actor": "n-1",
+              "body": "n-2",
+              "cause": "行动主体映射到期",
+              "source_memory": "agency:n-2:0.250200"
+            },
+            {
+              "id": "gap-n-2-2",
+              "started_clock": 2.2518,
+              "ended_clock": 3.2518,
+              "actor": "n-1",
+              "body": "n-2",
+              "cause": "行动主体映射到期",
+              "source_memory": "agency:n-2:2.251800"
+            }
+          ],
+          "beliefs": [],
+          "goals": [
+            {
+              "id": "g-2",
+              "text": "找到梦中出现的系守町",
+              "progress": 0.3,
+              "blocked_by": "",
+              "blocked_note": ""
+            },
+            {
+              "id": "g-3",
+              "text": "与三叶重逢",
+              "progress": 0.3,
+              "blocked_by": "",
+              "blocked_note": ""
+            }
+          ],
+          "relationship": 0,
+          "state": {
+            "location": "s-3",
+            "activity": "在彗星坑边紧紧攥着石片，望着西边渐暗的天色",
+            "mood": "焦灼而坚定",
+            "mood_value": 0.0,
+            "mood_reason": "与玩家的对话：你在等谁？",
+            "last_turn": 247,
+            "last_clock": 4.753799999999998,
+            "last_time": "第5天·深夜",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [
+              {
+                "id": "sf-n-2-1",
+                "text": "喜欢画画，常带素描本",
+                "source_memory": "m-2-1",
+                "since_clock": -7300.0,
+                "review_clock": null
+              }
+            ],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "在彗星坑边等泷来相见",
+              "targets": [
+                "scene:s-3",
+                "npc:n-2"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 233
+            },
+            "can_act": true,
+            "condition": "在末班车上赶路"
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {
+            "n-1": 0.5
+          }
+        }
+      },
+      "doors": {},
+      "player": {
+        "location": "s-1",
+        "start": "s-1",
+        "seen": {
+          "s-1": 30,
+          "s-2": 130
+        }
+      },
+      "events": [
+        {
+          "turn": 1,
+          "kind": "world_created",
+          "summary": "世界「世界」诞生：夏日·彗星将至",
+          "cause": "创建世界命令",
+          "payload": {
+            "laws": [
+              "law-1",
+              "law-2",
+              "law-3"
+            ]
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 2,
+          "kind": "memory_projected",
+          "summary": "宫水三叶 的一段往事已对齐世界账本",
+          "cause": "记忆：m-1-1",
+          "payload": {
+            "npc": "n-1",
+            "memory": "m-1-1",
+            "scene": "s-1"
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 3,
+          "kind": "memory_projected",
+          "summary": "立花泷 的一段往事已对齐世界账本",
+          "cause": "记忆：m-2-1",
+          "payload": {
+            "npc": "n-2",
+            "memory": "m-2-1",
+            "scene": "s-2"
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 4,
+          "kind": "scene_generated",
+          "summary": "贴片「东京街区」首次生成",
+          "cause": "贴片生成",
+          "payload": {
+            "event_params": {
+              "scene": "s-2"
+            }
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 10,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 0.0,
+          "duration": 0.2502
+        },
+        {
+          "turn": 11,
+          "kind": "agency_changed",
+          "summary": "立花泷 开始通过 宫水三叶 的身体行动",
+          "cause": "泷的灵魂进入三叶身体",
+          "payload": {
+            "npc": "n-1",
+            "body": "n-1",
+            "actor": "n-2",
+            "started_clock": 0.2502,
+            "until_clock": 1.2502
+          },
+          "day": 0.2502,
+          "duration": 0.0
+        },
+        {
+          "turn": 12,
+          "kind": "agency_changed",
+          "summary": "宫水三叶 开始通过 立花泷 的身体行动",
+          "cause": "三叶的灵魂进入泷身体",
+          "payload": {
+            "npc": "n-2",
+            "body": "n-2",
+            "actor": "n-1",
+            "started_clock": 0.2502,
+            "until_clock": 1.2502
+          },
+          "day": 0.2502,
+          "duration": 0.0
+        },
+        {
+          "turn": 13,
+          "kind": "world_event",
+          "summary": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+          "cause": "既定时刻",
+          "payload": {
+            "event_params": {
+              "title": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+              "detail": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+              "intensity": 0.7,
+              "refs": [
+                "npc:n-1",
+                "npc:n-2"
+              ],
+              "location": "s-1"
+            }
+          },
+          "day": 0.2502,
+          "duration": 0.0
+        },
+        {
+          "turn": 14,
+          "kind": "daily_life",
+          "summary": "东京的街道上人来人往，午后的阳光透过高楼间隙洒下，电车声隐约传来。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京的街道上人来人往，午后的阳光透过高楼间隙洒下，电车声隐约传来。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 0.2502,
+          "duration": 0.0
+        },
+        {
+          "turn": 15,
+          "kind": "daily_life",
+          "summary": "巫女服被风吹动了一角，又恢复原样。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "巫女服被风吹动了一角，又恢复原样。",
+              "location": "s-1",
+              "intensity": 0.1,
+              "item": "i-3"
+            }
+          },
+          "day": 0.2502,
+          "duration": 0.0
+        },
+        {
+          "turn": 21,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 0.2502,
+          "duration": 0.2502
+        },
+        {
+          "turn": 22,
+          "kind": "player_said",
+          "summary": "你 对 宫水三叶 说：「你在等谁？」",
+          "cause": "玩家对话",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "content": "你在等谁？",
+              "location": "s-1"
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 23,
+          "kind": "npc_reacted",
+          "summary": "宫水三叶：轻轻低下头，手指无意识地摩挲着绳结发饰的红线。",
+          "cause": "玩家对话",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "reaction": "轻轻低下头，手指无意识地摩挲着绳结发饰的红线。",
+              "location": "s-1"
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 24,
+          "kind": "dialogue",
+          "summary": "立花泷 记住了：我在等一个忘了名字的人，手里握着红线。",
+          "cause": "你在等谁？",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 0.2502,
+            "ended_clock": 0.5004
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 25,
+          "kind": "npc_acted",
+          "summary": "宫水三叶 主动：攥紧绳结发饰，抬眼望向神社外的天空，彗星将至的预感让心口发紧，我决定趁黄昏去彗星坑边看看——那里或许藏着那个名字的线索。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-2",
+              "action": "攥紧绳结发饰，抬眼望向神社外的天空，彗星将至的预感让心口发紧，我决定趁黄昏去彗星坑边看看——那里或许藏着那个名字的线索。",
+              "location": "s-3",
+              "origin": "s-1",
+              "travel": true,
+              "place": "彗星坑",
+              "days": 0.2,
+              "targets": [
+                "scene:s-3"
+              ],
+              "requires": [
+                "scene:s-3"
+              ]
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 26,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：宫水三叶 主动：攥紧绳结发饰，抬眼望向神社外的天空，彗星将至的预感让心口发紧，我决定趁黄昏去彗星坑边看看——那里或许藏着那个名字的线索。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 0.2502,
+            "ended_clock": 0.5004
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 27,
+          "kind": "npc_intent",
+          "summary": "宫水三叶 有了打算：「黄昏去彗星坑边核对印记，寻找那个名字的线索」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "intent": "黄昏去彗星坑边核对印记，寻找那个名字的线索",
+              "previous": "",
+              "targets": [
+                "scene:s-3"
+              ],
+              "earliest_clock": 0.55,
+              "latest_clock": 0.75
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 28,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「找到梦中出现的系守町」推进了：彗星将至的黄昏，我动身前往梦中反复出现的彗星坑，想在那里找到系守町的线索",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 0.2502,
+            "ended_clock": 0.5004
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 29,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「与三叶重逢」推进了：握着红线等一个忘了名字的人，黄昏的预感让我觉得离重逢更近了一步",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 0.2502,
+            "ended_clock": 0.5004
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 30,
+          "kind": "dialogue",
+          "summary": "宫水三叶：……我在等一个名字，一个我好像忘了的名字。",
+          "cause": "玩家对话",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "reply": "……我在等一个名字，一个我好像忘了的名字。",
+              "location": "s-1"
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 31,
+          "kind": "daily_life",
+          "summary": "黄昏的东京街头，行人脚步匆匆，霓虹灯渐次亮起，电车呼啸而过。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "黄昏的东京街头，行人脚步匆匆，霓虹灯渐次亮起，电车呼啸而过。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 32,
+          "kind": "daily_life",
+          "summary": "日记本的页角被风翻动，又合上。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "日记本的页角被风翻动，又合上。",
+              "location": "s-1",
+              "intensity": 0.1,
+              "item": "i-1"
+            }
+          },
+          "day": 0.5004,
+          "duration": 0.0
+        },
+        {
+          "turn": 38,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 0.5004,
+          "duration": 0.2502
+        },
+        {
+          "turn": 39,
+          "kind": "npc_moved",
+          "summary": "宫水三叶 从「系守町神社」来到「彗星坑」",
+          "cause": "角色抵达",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "from": "s-1",
+              "to": "s-3"
+            }
+          },
+          "day": 0.7505999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 40,
+          "kind": "action_done",
+          "summary": "宫水三叶 完成了「攥紧绳结发饰，抬眼望向神社外的天空，彗星将至的预感让心口发紧，我决定趁黄昏去彗星坑边看看——那里或许藏着那个名字的线索。」：她攥紧绳结发饰，目光穿过神社外渐暗的天色，彗星将至的预感让胸口发紧。她决定趁黄昏动身前往彗星坑，那里或许藏着那个名字的线索。她将绳结发饰系回手腕，转身朝神社外的山路走去。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-2",
+              "action": "攥紧绳结发饰，抬眼望向神社外的天空，彗星将至的预感让心口发紧，我决定趁黄昏去彗星坑边看看——那里或许藏着那个名字的线索。",
+              "outcome": "她攥紧绳结发饰，目光穿过神社外渐暗的天色，彗星将至的预感让胸口发紧。她决定趁黄昏动身前往彗星坑，那里或许藏着那个名字的线索。她将绳结发饰系回手腕，转身朝神社外的山路走去。",
+              "location": "s-3"
+            }
+          },
+          "day": 0.7505999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 41,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：我做完了这件事：她攥紧绳结发饰，目光穿过神社外渐暗的天色，彗星将至的预感让胸口发紧。她决定趁黄昏动身前往彗星坑，那里或许藏着那个名字的线索。她将绳结发饰系回手腕，转身朝神社外的山路走去。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 0.5004,
+            "ended_clock": 0.7505999999999999
+          },
+          "day": 0.7505999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 42,
+          "kind": "npc_intent",
+          "summary": "宫水三叶 改了打算：「黄昏去彗星坑边核对印记，寻找那个名字的线索」→「黄昏去彗星坑边核对印记，寻找那个名字的线索」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "intent": "黄昏去彗星坑边核对印记，寻找那个名字的线索",
+              "previous": "黄昏去彗星坑边核对印记，寻找那个名字的线索",
+              "targets": [
+                "scene:s-3"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 0.7505999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 43,
+          "kind": "daily_life",
+          "summary": "深夜的东京街头，行人稀疏，霓虹灯仍亮着，偶尔有出租车驶过。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "深夜的东京街头，行人稀疏，霓虹灯仍亮着，偶尔有出租车驶过。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 0.7505999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 49,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 0.7505999999999999,
+          "duration": 0.2502
+        },
+        {
+          "turn": 50,
+          "kind": "npc_catchup",
+          "summary": "立花泷 记住了：黄昏的山路尽头，彗星坑在暮色中展开，我攥紧腕上的绳结，仿佛下一秒就能找到那个名字。",
+          "cause": "读取补算",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 0.2502,
+            "ended_clock": 1.0008
+          },
+          "day": 1.0008,
+          "duration": 0.0
+        },
+        {
+          "turn": 51,
+          "kind": "action_refused",
+          "summary": "宫水三叶 拒绝了你的动作「把伞往他那边挪了挪，问他冷不冷」：宫水三叶已经不在这里了",
+          "cause": "玩家动作",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "action": "把伞往他那边挪了挪，问他冷不冷",
+              "reason": "宫水三叶已经不在这里了"
+            }
+          },
+          "day": 1.0008,
+          "duration": 0.0
+        },
+        {
+          "turn": 52,
+          "kind": "world_event",
+          "summary": "彗星晨光初现：清晨的天边，彗星拖着淡青色的尾迹，在曦光中隐约可见。小镇的屋顶上，早起的人抬头望见，心里掠过一丝不安。",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "title": "彗星晨光初现",
+              "detail": "清晨的天边，彗星拖着淡青色的尾迹，在曦光中隐约可见。小镇的屋顶上，早起的人抬头望见，心里掠过一丝不安。",
+              "location": "s-1",
+              "intensity": 0.75,
+              "refs": []
+            }
+          },
+          "day": 1.0008,
+          "duration": 0.0
+        },
+        {
+          "turn": 53,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：听说：彗星晨光初现：清晨的天边，彗星拖着淡青色的尾迹，在曦光中隐约可见。小镇的屋顶上，早起的人抬头望见，心里掠过一丝不安。",
+          "cause": "事件：彗星晨光初现：清晨的天边，彗星拖着淡青色的尾迹，在曦光中隐约可见。小镇的屋顶上，早起的人抬头望见，心里掠过一丝不安。",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 0.2502,
+            "ended_clock": 1.0008
+          },
+          "day": 1.0008,
+          "duration": 0.0
+        },
+        {
+          "turn": 54,
+          "kind": "daily_life",
+          "summary": "神社的石阶上，早起的町民三三两两走过，有人提着水桶，有人抱着扫帚，低声议论着天边那颗越来越亮的彗星。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "神社的石阶上，早起的町民三三两两走过，有人提着水桶，有人抱着扫帚，低声议论着天边那颗越来越亮的彗星。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 1.0008,
+          "duration": 0.0
+        },
+        {
+          "turn": 55,
+          "kind": "daily_life",
+          "summary": "彗星坑边的野草上挂满露珠，一只早起的山雀在碎石间跳着啄食。（彗星坑）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "彗星坑边的野草上挂满露珠，一只早起的山雀在碎石间跳着啄食。",
+              "location": "s-3",
+              "intensity": 0.1
+            }
+          },
+          "day": 1.0008,
+          "duration": 0.0
+        },
+        {
+          "turn": 61,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 1.0008,
+          "duration": 0.2502
+        },
+        {
+          "turn": 62,
+          "kind": "memory_gap_recorded",
+          "summary": "宫水三叶 的经历出现一段时间断档",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-2",
+            "body": "n-1",
+            "gap": "gap-n-1-1",
+            "started_clock": 0.2502,
+            "ended_clock": 1.2502
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 63,
+          "kind": "agency_changed",
+          "summary": "宫水三叶 的行动主体恢复为身体主人",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-1",
+            "body": "n-1",
+            "actor": "n-1",
+            "previous_actor": "n-2",
+            "started_clock": 0.2502,
+            "ended_clock": 1.2502
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 64,
+          "kind": "memory_gap_recorded",
+          "summary": "立花泷 的经历出现一段时间断档",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-1",
+            "body": "n-2",
+            "gap": "gap-n-2-1",
+            "started_clock": 0.2502,
+            "ended_clock": 1.2502
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 65,
+          "kind": "agency_changed",
+          "summary": "立花泷 的行动主体恢复为身体主人",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-2",
+            "body": "n-2",
+            "actor": "n-2",
+            "previous_actor": "n-1",
+            "started_clock": 0.2502,
+            "ended_clock": 1.2502
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 66,
+          "kind": "npc_acted",
+          "summary": "宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏时分的约定。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏时分的约定。",
+              "days": 0.25,
+              "location": "s-3",
+              "place": null,
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-1",
+              "origin": "s-3"
+            }
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 67,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏时分的约定。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 1.251,
+            "ended_clock": 1.251
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 68,
+          "kind": "npc_intent",
+          "summary": "宫水三叶 有了打算：「在彗星坑边等待黄昏，寻找印记和名字的线索」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "intent": "在彗星坑边等待黄昏，寻找印记和名字的线索",
+              "previous": "",
+              "targets": [
+                "scene:s-3"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 69,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：目标「查明交换身体的原因」推进了：宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 1.251,
+            "ended_clock": 1.251
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 70,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：目标「在彗星坠落前拯救小镇」推进了：宫水三叶 主动：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 1.251,
+            "ended_clock": 1.251
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 71,
+          "kind": "npc_acted",
+          "summary": "立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下定决心要找到去系守町的路。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下定决心要找到去系守町的路。",
+              "days": 0.5,
+              "location": "s-2",
+              "place": null,
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-2",
+              "origin": "s-2"
+            }
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 72,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下定决心要找到去系守町的路。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 1.251,
+            "ended_clock": 1.251
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 73,
+          "kind": "npc_intent",
+          "summary": "立花泷 改了打算：「黄昏去彗星坑边核对印记，寻找那个名字的线索」→「寻找前往系守町的方法，黄昏前赶到彗星坑」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "寻找前往系守町的方法，黄昏前赶到彗星坑",
+              "previous": "黄昏去彗星坑边核对印记，寻找那个名字的线索",
+              "targets": [
+                "scene:s-3",
+                "scene:s-1"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 74,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「找到梦中出现的系守町」推进了：立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 1.251,
+            "ended_clock": 1.251
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 75,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「与三叶重逢」推进了：立花泷 主动：在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 1.251,
+            "ended_clock": 1.251
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 76,
+          "kind": "daily_life",
+          "summary": "神社前的石阶上，几个町民提着水桶经过，低声议论着天边那颗彗星——有人说是吉兆，有人摇头说不安。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "神社前的石阶上，几个町民提着水桶经过，低声议论着天边那颗彗星——有人说是吉兆，有人摇头说不安。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 77,
+          "kind": "daily_life",
+          "summary": "东京的十字路口，行人匆匆穿过斑马线，偶尔有人抬头望一眼天空，又低头赶路。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京的十字路口，行人匆匆穿过斑马线，偶尔有人抬头望一眼天空，又低头赶路。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 1.251,
+          "duration": 0.0
+        },
+        {
+          "turn": 83,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 1.251,
+          "duration": 0.2502
+        },
+        {
+          "turn": 84,
+          "kind": "action_done",
+          "summary": "宫水三叶 完成了「在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏时分的约定。」：三叶在彗星坑边拨开碎石，指尖触到一块温热的石片，上面隐约有绳结状的刻痕，与梦中印记吻合。她心头一震，攥紧石片，抬头望向愈发明亮的彗星，黄昏之约的念头更坚定了。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-1",
+              "action": "在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同时望着天边越来越亮的彗星，心中默默盘算着黄昏时分的约定。",
+              "outcome": "三叶在彗星坑边拨开碎石，指尖触到一块温热的石片，上面隐约有绳结状的刻痕，与梦中印记吻合。她心头一震，攥紧石片，抬头望向愈发明亮的彗星，黄昏之约的念头更坚定了。",
+              "location": "s-3"
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 85,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：我做完了这件事：三叶在彗星坑边拨开碎石，指尖触到一块温热的石片，上面隐约有绳结状的刻痕，与梦中印记吻合。她心头一震，攥紧石片，抬头望向愈发明亮的彗星，黄昏之约的念头更坚定了。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 1.251,
+            "ended_clock": 1.5011999999999999
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 86,
+          "kind": "item_added",
+          "summary": "「刻有绳结纹样的石片」出现在「彗星坑」（温热的石片，表面有绳结状刻痕，与三叶梦中印记一致）",
+          "cause": "动作结局：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同",
+          "payload": {
+            "event_params": {
+              "item": "i-4",
+              "name": "刻有绳结纹样的石片",
+              "location": "s-3",
+              "note": "温热的石片，表面有绳结状刻痕，与三叶梦中印记一致"
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 87,
+          "kind": "item_transfer",
+          "summary": "「刻有绳结纹样的石片」被 npc:n-1 拿走了（「彗星坑」）",
+          "cause": "动作结局：在彗星坑边坐下，用指尖拨开碎石，想寻找梦中反复出现的印记，同",
+          "payload": {
+            "event_params": {
+              "item": "刻有绳结纹样的石片",
+              "holder": "npc:n-1",
+              "location": "s-3"
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 88,
+          "kind": "npc_intent",
+          "summary": "立花泷 改了打算：「寻找前往系守町的方法，黄昏前赶到彗星坑」→「黄昏前赶到彗星坑」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "黄昏前赶到彗星坑",
+              "previous": "寻找前往系守町的方法，黄昏前赶到彗星坑",
+              "targets": [
+                "scene:s-3"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 89,
+          "kind": "daily_life",
+          "summary": "东京车站的黄昏，赶路的人潮涌动，有人拖着行李箱匆匆进站，广播里报着发车时刻。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京车站的黄昏，赶路的人潮涌动，有人拖着行李箱匆匆进站，广播里报着发车时刻。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 90,
+          "kind": "daily_life",
+          "summary": "「巫女服」又经历了 1 次渐变，最后停在：巫女服挂在檐下，被晨风吹得微微摆动，衣角沾了些露水。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "「巫女服」又经历了 1 次渐变，最后停在：巫女服挂在檐下，被晨风吹得微微摆动，衣角沾了些露水。",
+              "location": "s-1",
+              "item": "i-3"
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 91,
+          "kind": "daily_life",
+          "summary": "巫女服挂在檐下，暮色里布料被风掀起一角，沾了些许尘灰。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "巫女服挂在檐下，暮色里布料被风掀起一角，沾了些许尘灰。",
+              "location": "s-1",
+              "intensity": 0.2,
+              "item": "i-3"
+            }
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 97,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 1.5011999999999999,
+          "duration": 0.2502
+        },
+        {
+          "turn": 98,
+          "kind": "scene_entered",
+          "summary": "你离开广场，去了：东京街区",
+          "cause": "玩家移动",
+          "payload": {
+            "actor": "player",
+            "from": "s-1",
+            "to": "s-2",
+            "scene": "s-2"
+          },
+          "day": 1.7513999999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 104,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "时间流逝",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 1.7513999999999998,
+          "duration": 0.2502
+        },
+        {
+          "turn": 105,
+          "kind": "action_done",
+          "summary": "立花泷 完成了「在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下定决心要找到去系守町的路。」：立花泷在东京街头反复查看地图，确认了系守町的大致方位，攥紧拳头下定决心——黄昏前必须赶到彗星坑。他收起手机，目光坚定地望向西边天空。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-2",
+              "action": "在东京的街道上反复踱步，掏出手机查看系守町的地图，又抬头望向西边天空——彗星在白天隐约可见，他攥紧拳头，下定决心要找到去系守町的路。",
+              "outcome": "立花泷在东京街头反复查看地图，确认了系守町的大致方位，攥紧拳头下定决心——黄昏前必须赶到彗星坑。他收起手机，目光坚定地望向西边天空。",
+              "location": "s-2"
+            }
+          },
+          "day": 2.0016,
+          "duration": 0.0
+        },
+        {
+          "turn": 106,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：我做完了这件事：立花泷在东京街头反复查看地图，确认了系守町的大致方位，攥紧拳头下定决心——黄昏前必须赶到彗星坑。他收起手机，目光坚定地望向西边天空。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 1.251,
+            "ended_clock": 2.0016
+          },
+          "day": 2.0016,
+          "duration": 0.0
+        },
+        {
+          "turn": 112,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "时间流逝",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 2.0016,
+          "duration": 0.2502
+        },
+        {
+          "turn": 113,
+          "kind": "agency_changed",
+          "summary": "立花泷 开始通过 宫水三叶 的身体行动",
+          "cause": "泷的灵魂进入三叶身体",
+          "payload": {
+            "npc": "n-1",
+            "body": "n-1",
+            "actor": "n-2",
+            "started_clock": 2.2518,
+            "until_clock": 3.2518
+          },
+          "day": 2.2518,
+          "duration": 0.0
+        },
+        {
+          "turn": 114,
+          "kind": "agency_changed",
+          "summary": "宫水三叶 开始通过 立花泷 的身体行动",
+          "cause": "三叶的灵魂进入泷身体",
+          "payload": {
+            "npc": "n-2",
+            "body": "n-2",
+            "actor": "n-1",
+            "started_clock": 2.2518,
+            "until_clock": 3.2518
+          },
+          "day": 2.2518,
+          "duration": 0.0
+        },
+        {
+          "turn": 115,
+          "kind": "world_event",
+          "summary": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+          "cause": "既定时刻",
+          "payload": {
+            "event_params": {
+              "title": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+              "detail": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+              "intensity": 0.7,
+              "refs": [
+                "npc:n-1",
+                "npc:n-2"
+              ],
+              "location": "s-1"
+            }
+          },
+          "day": 2.2518,
+          "duration": 0.0
+        },
+        {
+          "turn": 116,
+          "kind": "daily_life",
+          "summary": "车站月台上挤着赶晚班通勤的人，几个学生模样的少年仰头指着西边天空，议论着那颗越来越亮的彗星。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "车站月台上挤着赶晚班通勤的人，几个学生模样的少年仰头指着西边天空，议论着那颗越来越亮的彗星。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 2.2518,
+          "duration": 0.0
+        },
+        {
+          "turn": 117,
+          "kind": "daily_life",
+          "summary": "彗星坑边的野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。（彗星坑）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "彗星坑边的野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。",
+              "location": "s-3",
+              "intensity": 0.2
+            }
+          },
+          "day": 2.2518,
+          "duration": 0.0
+        },
+        {
+          "turn": 123,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 2.2518,
+          "duration": 0.2502
+        },
+        {
+          "turn": 124,
+          "kind": "player_said",
+          "summary": "你 对 立花泷 说：「这城里，最近有什么新鲜事吗？」",
+          "cause": "玩家对话",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "content": "这城里，最近有什么新鲜事吗？",
+              "location": "s-2"
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 125,
+          "kind": "npc_reacted",
+          "summary": "立花泷：他停下脚步，微微皱眉，目光扫过街角匆匆的行人，又望向西边天空那颗隐约可见的彗星。",
+          "cause": "玩家对话",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "reaction": "他停下脚步，微微皱眉，目光扫过街角匆匆的行人，又望向西边天空那颗隐约可见的彗星。",
+              "location": "s-2"
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 126,
+          "kind": "npc_acted",
+          "summary": "宫水三叶 主动：三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-2",
+              "action": "三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。",
+              "location": "s-2",
+              "days": 0.2,
+              "targets": [
+                "scene:s-2"
+              ],
+              "requires": [],
+              "origin": "s-3"
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 127,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：宫水三叶 主动：三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 2.2518,
+            "ended_clock": 2.502
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 128,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：目标「查明交换身体的原因」推进了：在东京街头向路人打听彗星传闻，可能获得与交换身体相关的线索",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 2.2518,
+            "ended_clock": 2.502
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 129,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：目标「在彗星坠落前拯救小镇」推进了：向路人打听彗星坠落的具体日期和地点，为拯救小镇收集信息",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 2.2518,
+            "ended_clock": 2.502
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 130,
+          "kind": "dialogue",
+          "summary": "立花泷：新鲜事？……彗星要来了，大家都在抬头看。不过对我来说，最要紧的是找到去系守町的路。",
+          "cause": "玩家对话",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "reply": "新鲜事？……彗星要来了，大家都在抬头看。不过对我来说，最要紧的是找到去系守町的路。",
+              "location": "s-2"
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 131,
+          "kind": "daily_life",
+          "summary": "东京街头的人群纷纷驻足抬头，指着西边天空那颗越来越亮的彗星，议论纷纷。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京街头的人群纷纷驻足抬头，指着西边天空那颗越来越亮的彗星，议论纷纷。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 132,
+          "kind": "daily_life",
+          "summary": "「日记本」又经历了 2 次渐变，最后停在：日记本被晨风吹开几页，纸角微微卷起（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "「日记本」又经历了 2 次渐变，最后停在：日记本被晨风吹开几页，纸角微微卷起",
+              "location": "s-1",
+              "item": "i-1"
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 133,
+          "kind": "daily_life",
+          "summary": "日记本的封面被风吹开了一页，又合上。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "日记本的封面被风吹开了一页，又合上。",
+              "location": "s-1",
+              "intensity": 0.1,
+              "item": "i-1"
+            }
+          },
+          "day": 2.502,
+          "duration": 0.0
+        },
+        {
+          "turn": 139,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 2.502,
+          "duration": 0.2502
+        },
+        {
+          "turn": 140,
+          "kind": "npc_intent",
+          "summary": "立花泷 有了打算：「乘末班车赶往系守町」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "乘末班车赶往系守町",
+              "previous": "",
+              "targets": [
+                "scene:s-1"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 2.7521999999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 141,
+          "kind": "daily_life",
+          "summary": "深夜的东京车站，仍有零星赶末班车的人，拖着疲惫的身影穿过空旷的候车厅。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "深夜的东京车站，仍有零星赶末班车的人，拖着疲惫的身影穿过空旷的候车厅。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 2.7521999999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 147,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 2.7521999999999998,
+          "duration": 0.2502
+        },
+        {
+          "turn": 148,
+          "kind": "npc_state_changed",
+          "summary": "立花泷 恢复行动：在末班车上赶路",
+          "cause": "事件：立花泷 有了打算：「乘末班车赶往系守町」",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "can_act": true,
+              "condition": "在末班车上赶路",
+              "cause_event": "立花泷 有了打算：「乘末班车赶往系守町」"
+            }
+          },
+          "day": 3.0023999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 149,
+          "kind": "action_done",
+          "summary": "立花泷 完成了「三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。」：三叶借着泷的身体在东京街头向路人打听彗星传闻，多人口中提及彗星尾巴指向西北，且有人提到系守町方向的天际出现异常亮光。她确认了彗星坠落的大致方位与日期，但未获得精确坐标。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-1",
+              "action": "三叶借着泷的身体，在东京街头向路人打听关于彗星的传闻，尤其注意那些指向系守町的线索，想确认彗星坠落的具体日期和地点。",
+              "outcome": "三叶借着泷的身体在东京街头向路人打听彗星传闻，多人口中提及彗星尾巴指向西北，且有人提到系守町方向的天际出现异常亮光。她确认了彗星坠落的大致方位与日期，但未获得精确坐标。",
+              "location": "s-2"
+            }
+          },
+          "day": 3.0023999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 150,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：我做完了这件事：三叶借着泷的身体在东京街头向路人打听彗星传闻，多人口中提及彗星尾巴指向西北，且有人提到系守町方向的天际出现异常亮光。她确认了彗星坠落的大致方位与日期，但未获得精确坐标。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 2.502,
+            "ended_clock": 3.0023999999999997
+          },
+          "day": 3.0023999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 151,
+          "kind": "daily_life",
+          "summary": "东京车站的清晨，赶早班车的人流匆匆，几个学生背着书包，边走边抬头看西边天空那颗依旧明亮的彗星。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京车站的清晨，赶早班车的人流匆匆，几个学生背着书包，边走边抬头看西边天空那颗依旧明亮的彗星。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 3.0023999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 152,
+          "kind": "daily_life",
+          "summary": "东京车站的自动贩卖机前，一个上班族投币买罐装咖啡，易拉罐滚落时发出清脆的响声。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京车站的自动贩卖机前，一个上班族投币买罐装咖啡，易拉罐滚落时发出清脆的响声。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 3.0023999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 158,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 3.0023999999999997,
+          "duration": 0.2502
+        },
+        {
+          "turn": 159,
+          "kind": "memory_gap_recorded",
+          "summary": "宫水三叶 的经历出现一段时间断档",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-2",
+            "body": "n-1",
+            "gap": "gap-n-1-2",
+            "started_clock": 2.2518,
+            "ended_clock": 3.2518
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 160,
+          "kind": "agency_changed",
+          "summary": "宫水三叶 的行动主体恢复为身体主人",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-1",
+            "body": "n-1",
+            "actor": "n-1",
+            "previous_actor": "n-2",
+            "started_clock": 2.2518,
+            "ended_clock": 3.2518
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 161,
+          "kind": "memory_gap_recorded",
+          "summary": "立花泷 的经历出现一段时间断档",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-1",
+            "body": "n-2",
+            "gap": "gap-n-2-2",
+            "started_clock": 2.2518,
+            "ended_clock": 3.2518
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 162,
+          "kind": "agency_changed",
+          "summary": "立花泷 的行动主体恢复为身体主人",
+          "cause": "行动主体映射到期",
+          "payload": {
+            "npc": "n-2",
+            "body": "n-2",
+            "actor": "n-2",
+            "previous_actor": "n-1",
+            "started_clock": 2.2518,
+            "ended_clock": 3.2518
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 163,
+          "kind": "npc_acted",
+          "summary": "宫水三叶 主动：在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+              "days": 0.5,
+              "location": "s-3",
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-1",
+              "origin": "s-3"
+            }
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 164,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：宫水三叶 主动：在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.2525999999999997
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 165,
+          "kind": "npc_intent",
+          "summary": "宫水三叶 改了打算：「乘末班车赶往系守町」→「黄昏时在彗星坑边等泷来」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "intent": "黄昏时在彗星坑边等泷来",
+              "previous": "乘末班车赶往系守町",
+              "targets": [
+                "scene:s-3",
+                "npc:n-2"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 166,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：目标「在彗星坠落前拯救小镇」推进了：宫水三叶 主动：在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.2525999999999997
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 167,
+          "kind": "npc_acted",
+          "summary": "立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+              "days": 0.5,
+              "location": "s-1",
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-2",
+              "origin": "s-2"
+            }
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 168,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.2525999999999997
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 169,
+          "kind": "npc_intent",
+          "summary": "立花泷 有了打算：「赶在黄昏前到达彗星坑」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "赶在黄昏前到达彗星坑",
+              "previous": "",
+              "targets": [
+                "scene:s-3"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 170,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「找到梦中出现的系守町」推进了：立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.2525999999999997
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 171,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「与三叶重逢」推进了：立花泷 主动：登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.2525999999999997
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 172,
+          "kind": "daily_life",
+          "summary": "东京车站的候车厅里，几个赶末班车的乘客低声议论着西边天际那颗异常明亮的彗星，有人开玩笑说它会不会撞上地球。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京车站的候车厅里，几个赶末班车的乘客低声议论着西边天际那颗异常明亮的彗星，有人开玩笑说它会不会撞上地球。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 173,
+          "kind": "daily_life",
+          "summary": "彗星坑边的野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。（彗星坑）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "彗星坑边的野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。",
+              "location": "s-3",
+              "intensity": 0.1
+            }
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 179,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 3.2525999999999997,
+          "duration": 0.2502
+        },
+        {
+          "turn": 180,
+          "kind": "scene_entered",
+          "summary": "你回到广场：系守町神社",
+          "cause": "玩家移动",
+          "payload": {
+            "actor": "player",
+            "from": "s-2",
+            "to": "s-1",
+            "scene": "s-1"
+          },
+          "day": 3.5027999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 181,
+          "kind": "npc_intent",
+          "summary": "立花泷 改了打算：「赶在黄昏前到达彗星坑」→「下车后直奔彗星坑，赶在黄昏结束前见到三叶」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "下车后直奔彗星坑，赶在黄昏结束前见到三叶",
+              "previous": "赶在黄昏前到达彗星坑",
+              "targets": [
+                "scene:s-3",
+                "npc:n-1"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 3.5027999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 182,
+          "kind": "daily_life",
+          "summary": "东京车站的末班车月台上，零星几个乘客匆匆赶路，有人抬头望了一眼西边那颗异常明亮的彗星，又低头继续赶路。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "东京车站的末班车月台上，零星几个乘客匆匆赶路，有人抬头望了一眼西边那颗异常明亮的彗星，又低头继续赶路。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 3.5027999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 183,
+          "kind": "daily_life",
+          "summary": "日记本被风吹开了一页，页角微微卷起（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "日记本被风吹开了一页，页角微微卷起",
+              "location": "s-1",
+              "intensity": 0.1,
+              "item": "i-1"
+            }
+          },
+          "day": 3.5027999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 189,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 3.5027999999999997,
+          "duration": 0.2502
+        },
+        {
+          "turn": 190,
+          "kind": "action_done",
+          "summary": "宫水三叶 完成了「在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久」：三叶在彗星坑边反复摩挲着那块温热的石片，指尖感受着绳结刻痕的纹路，抬头望向西边愈发刺目的彗星光芒。她估算着黄昏还有不到一刻钟，心中那份约定愈发清晰——那石片在掌心微微发烫，像是呼应着什么。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-1",
+              "action": "在彗星坑边踱步，反复摩挲那块温热的石片，抬头望向西边越来越亮的彗星，计算黄昏还有多久",
+              "outcome": "三叶在彗星坑边反复摩挲着那块温热的石片，指尖感受着绳结刻痕的纹路，抬头望向西边愈发刺目的彗星光芒。她估算着黄昏还有不到一刻钟，心中那份约定愈发清晰——那石片在掌心微微发烫，像是呼应着什么。",
+              "location": "s-3"
+            }
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 191,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：我做完了这件事：三叶在彗星坑边反复摩挲着那块温热的石片，指尖感受着绳结刻痕的纹路，抬头望向西边愈发刺目的彗星光芒。她估算着黄昏还有不到一刻钟，心中那份约定愈发清晰——那石片在掌心微微发烫，像是呼应着什么。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-1",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.7529999999999997
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 192,
+          "kind": "item_removed",
+          "summary": "「巫女服」从「系守町神社」消失（太久没人提起，被时间扫走了）",
+          "cause": "时间流逝",
+          "payload": {
+            "event_params": {
+              "item": "i-3",
+              "name": "巫女服",
+              "location": "s-1",
+              "note": "太久没人提起，被时间扫走了"
+            }
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 193,
+          "kind": "npc_moved",
+          "summary": "立花泷 从「东京街区」来到「系守町神社」",
+          "cause": "角色抵达",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "from": "s-2",
+              "to": "s-1"
+            }
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 194,
+          "kind": "action_done",
+          "summary": "立花泷 完成了「登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星」：末班列车在夜色中一路向西，立花泷望着窗外那颗异常明亮的彗星，攥紧拳头。列车在系守町附近的站台停下，他跳下车，踩着黄昏最后的光线朝彗星坑的方向跑去。他抵达了系守町——那个梦里反复出现的、地图上却找不到的地方。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-2",
+              "action": "登上开往系守町方向的末班列车，靠窗坐下，望着窗外西边天空的彗星",
+              "outcome": "末班列车在夜色中一路向西，立花泷望着窗外那颗异常明亮的彗星，攥紧拳头。列车在系守町附近的站台停下，他跳下车，踩着黄昏最后的光线朝彗星坑的方向跑去。他抵达了系守町——那个梦里反复出现的、地图上却找不到的地方。",
+              "location": "s-1"
+            }
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 195,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：我做完了这件事：末班列车在夜色中一路向西，立花泷望着窗外那颗异常明亮的彗星，攥紧拳头。列车在系守町附近的站台停下，他跳下车，踩着黄昏最后的光线朝彗星坑的方向跑去。他抵达了系守町——那个梦里反复出现的、地图上却找不到的地方。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-2",
+            "started_clock": 3.2525999999999997,
+            "ended_clock": 3.7529999999999997
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 196,
+          "kind": "daily_life",
+          "summary": "末班列车的车厢里，几个乘客靠在椅背上打盹，车窗外的夜色被彗星的光染成淡青色。（东京街区）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "末班列车的车厢里，几个乘客靠在椅背上打盹，车窗外的夜色被彗星的光染成淡青色。",
+              "location": "s-2",
+              "intensity": 0.1
+            }
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.0
+        },
+        {
+          "turn": 202,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 3.7529999999999997,
+          "duration": 0.2502
+        },
+        {
+          "turn": 203,
+          "kind": "agency_changed",
+          "summary": "立花泷 开始通过 宫水三叶 的身体行动",
+          "cause": "泷的灵魂进入三叶身体",
+          "payload": {
+            "npc": "n-1",
+            "body": "n-1",
+            "actor": "n-2",
+            "started_clock": 4.0032,
+            "until_clock": 5.0032
+          },
+          "day": 4.0032,
+          "duration": 0.0
+        },
+        {
+          "turn": 204,
+          "kind": "agency_changed",
+          "summary": "宫水三叶 开始通过 立花泷 的身体行动",
+          "cause": "三叶的灵魂进入泷身体",
+          "payload": {
+            "npc": "n-2",
+            "body": "n-2",
+            "actor": "n-1",
+            "started_clock": 4.0032,
+            "until_clock": 5.0032
+          },
+          "day": 4.0032,
+          "duration": 0.0
+        },
+        {
+          "turn": 205,
+          "kind": "world_event",
+          "summary": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+          "cause": "既定时刻",
+          "payload": {
+            "event_params": {
+              "title": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+              "detail": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+              "intensity": 0.7,
+              "refs": [
+                "npc:n-1",
+                "npc:n-2"
+              ],
+              "location": "s-1"
+            }
+          },
+          "day": 4.0032,
+          "duration": 0.0
+        },
+        {
+          "turn": 206,
+          "kind": "daily_life",
+          "summary": "清晨的神社石阶上，几位早起的町民提着水桶走过，朝彗星的方向望了一眼，又低头继续赶路。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "清晨的神社石阶上，几位早起的町民提着水桶走过，朝彗星的方向望了一眼，又低头继续赶路。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 4.0032,
+          "duration": 0.0
+        },
+        {
+          "turn": 212,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 4.0032,
+          "duration": 0.2502
+        },
+        {
+          "turn": 213,
+          "kind": "npc_acted",
+          "summary": "宫水三叶 主动：彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。",
+              "days": 0.1,
+              "location": "s-3",
+              "place": "彗星坑",
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-2",
+              "origin": "s-3"
+            }
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 214,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：宫水三叶 主动：彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 4.0032,
+            "ended_clock": 4.253399999999999
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 215,
+          "kind": "npc_intent",
+          "summary": "宫水三叶 有了打算：「在彗星坑边留下记号，等黄昏与他相见」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "intent": "在彗星坑边留下记号，等黄昏与他相见",
+              "previous": "",
+              "targets": [
+                "scene:s-3",
+                "npc:n-2"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 216,
+          "kind": "npc_acted",
+          "summary": "立花泷 主动：立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。",
+              "days": 0.3,
+              "location": "s-3",
+              "place": "彗星坑",
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-1",
+              "origin": "s-1"
+            }
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 217,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：立花泷 主动：立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 4.0032,
+            "ended_clock": 4.253399999999999
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 218,
+          "kind": "npc_intent",
+          "summary": "立花泷 有了打算：「赶往彗星坑，黄昏时与三叶相见」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "赶往彗星坑，黄昏时与三叶相见",
+              "previous": "",
+              "targets": [
+                "scene:s-3",
+                "npc:n-1"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 219,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：目标「在彗星坠落前拯救小镇」推进了：立花泷 主动：立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 4.0032,
+            "ended_clock": 4.253399999999999
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 220,
+          "kind": "daily_life",
+          "summary": "神社石阶下，几个町民聚在一起仰头看天，彗星的尾巴在日光里泛着淡白，有人低声说「今晚怕是更亮」。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "神社石阶下，几个町民聚在一起仰头看天，彗星的尾巴在日光里泛着淡白，有人低声说「今晚怕是更亮」。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 4.253399999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 226,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 4.253399999999999,
+          "duration": 0.2502
+        },
+        {
+          "turn": 227,
+          "kind": "action_done",
+          "summary": "宫水三叶 完成了「彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。」：三叶在碎石间找到一块边缘锋利的硬石，蹲下身，在温热的石片上沿着原有的绳结刻痕又深深补了一道。刻痕清晰而用力，像是要把那个名字和约定一起刻进石头里。她直起身，望向西边渐暗的天色，攥紧腕上的绳结。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-2",
+              "action": "彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块温热的石片上补一道更深的绳结刻痕，好让黄昏时那个东京来的少年一眼认出。",
+              "outcome": "三叶在碎石间找到一块边缘锋利的硬石，蹲下身，在温热的石片上沿着原有的绳结刻痕又深深补了一道。刻痕清晰而用力，像是要把那个名字和约定一起刻进石头里。她直起身，望向西边渐暗的天色，攥紧腕上的绳结。",
+              "location": "s-3"
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 228,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：我做完了这件事：三叶在碎石间找到一块边缘锋利的硬石，蹲下身，在温热的石片上沿着原有的绳结刻痕又深深补了一道。刻痕清晰而用力，像是要把那个名字和约定一起刻进石头里。她直起身，望向西边渐暗的天色，攥紧腕上的绳结。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 4.253399999999999,
+            "ended_clock": 4.503599999999999
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 229,
+          "kind": "item_changed",
+          "summary": "「刻有绳结刻痕的温热石片」变了：「彗星坑」（绳结刻痕被三叶用硬石加深补刻，痕迹清晰醒目，等待黄昏时被认出）",
+          "cause": "动作结局：彗星坑边的风越发紧了，三叶在碎石间寻找能刻字的硬石，想在那块",
+          "payload": {
+            "event_params": {
+              "item": "i-4",
+              "name": "刻有绳结刻痕的温热石片",
+              "location": "s-3",
+              "note": "绳结刻痕被三叶用硬石加深补刻，痕迹清晰醒目，等待黄昏时被认出"
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 230,
+          "kind": "action_refused",
+          "summary": "宫水三叶 拒绝了你的动作「离开前，把口袋里最后一枚硬币放在他的摊上」：宫水三叶已经不在这里了",
+          "cause": "玩家动作",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "action": "离开前，把口袋里最后一枚硬币放在他的摊上",
+              "reason": "宫水三叶已经不在这里了"
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 231,
+          "kind": "npc_acted",
+          "summary": "宫水三叶 主动：在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "action": "在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现",
+              "days": 0,
+              "location": "s-3",
+              "place": "",
+              "requires": [],
+              "npc": "n-1",
+              "body": "n-1",
+              "actor": "n-2",
+              "origin": "s-3"
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 232,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：宫水三叶 主动：在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 4.0032,
+            "ended_clock": 4.503599999999999
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 233,
+          "kind": "npc_intent",
+          "summary": "宫水三叶 改了打算：「在彗星坑边留下记号，等黄昏与他相见」→「在彗星坑边等泷来相见」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-1",
+              "intent": "在彗星坑边等泷来相见",
+              "previous": "在彗星坑边留下记号，等黄昏与他相见",
+              "targets": [
+                "scene:s-3",
+                "npc:n-2"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 234,
+          "kind": "npc_memory",
+          "summary": "立花泷 记住了：目标「与三叶重逢」推进了：宫水三叶 主动：在彗星坑边的碎石上坐下，把刻着绳结纹路的石片放在膝头，抬头望向通往神社的小路，等着那个身影出现",
+          "cause": "目标推进",
+          "payload": {
+            "npc": "n-2",
+            "actor": "n-2",
+            "body": "n-1",
+            "started_clock": 4.0032,
+            "ended_clock": 4.503599999999999
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 235,
+          "kind": "npc_intent",
+          "summary": "立花泷 改了打算：「赶往彗星坑，黄昏时与三叶相见」→「赶到彗星坑，黄昏时与三叶相见」",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "intent": "赶到彗星坑，黄昏时与三叶相见",
+              "previous": "赶往彗星坑，黄昏时与三叶相见",
+              "targets": [
+                "scene:s-3",
+                "npc:n-1"
+              ],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 236,
+          "kind": "daily_life",
+          "summary": "神社石阶下，几个町民拎着买好的菜往回走，有人停下来抬头看了一眼彗星，嘀咕了一声「今晚怕是要更亮」，又低头赶路。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "神社石阶下，几个町民拎着买好的菜往回走，有人停下来抬头看了一眼彗星，嘀咕了一声「今晚怕是要更亮」，又低头赶路。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 237,
+          "kind": "daily_life",
+          "summary": "系守町的杂货店门口，老板娘把白天晒在外面的几把伞收进店里，抬头望了望西边天空那道彗尾，自言自语说「这日头还没落尽呢」。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "系守町的杂货店门口，老板娘把白天晒在外面的几把伞收进店里，抬头望了望西边天空那道彗尾，自言自语说「这日头还没落尽呢」。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 238,
+          "kind": "daily_life",
+          "summary": "彗星坑边一丛野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。（彗星坑）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "彗星坑边一丛野草被风吹得伏倒又立起，露珠顺着叶尖滚落，渗进碎石缝里。",
+              "location": "s-3",
+              "intensity": 0.1
+            }
+          },
+          "day": 4.503599999999999,
+          "duration": 0.0
+        },
+        {
+          "turn": 244,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "玩家等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.2502
+          },
+          "day": 4.503599999999999,
+          "duration": 0.2502
+        },
+        {
+          "turn": 245,
+          "kind": "npc_moved",
+          "summary": "立花泷 从「系守町神社」来到「彗星坑」",
+          "cause": "角色抵达",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "from": "s-1",
+              "to": "s-3"
+            }
+          },
+          "day": 4.753799999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 246,
+          "kind": "action_done",
+          "summary": "立花泷 完成了「立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。」：立花泷顺着日记本的方向，踏上了通往彗星坑的小路。他攥紧夹着绳结发饰的那一页，脚步加快，黄昏的余光正一点点沉向西山。",
+          "cause": "角色驱动力",
+          "payload": {
+            "event_params": {
+              "npc": "n-2",
+              "body": "n-2",
+              "actor": "n-1",
+              "action": "立花泷在神社石阶前停下，从怀里摸出那本卷了角的日记本，翻到夹着绳结发饰的那一页，确认方向后，抬脚朝彗星坑走去。",
+              "outcome": "立花泷顺着日记本的方向，踏上了通往彗星坑的小路。他攥紧夹着绳结发饰的那一页，脚步加快，黄昏的余光正一点点沉向西山。",
+              "location": "s-3"
+            }
+          },
+          "day": 4.753799999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 247,
+          "kind": "npc_memory",
+          "summary": "宫水三叶 记住了：我做完了这件事：立花泷顺着日记本的方向，踏上了通往彗星坑的小路。他攥紧夹着绳结发饰的那一页，脚步加快，黄昏的余光正一点点沉向西山。",
+          "cause": "角色驱动力",
+          "payload": {
+            "npc": "n-1",
+            "actor": "n-1",
+            "body": "n-2",
+            "started_clock": 4.253399999999999,
+            "ended_clock": 4.753799999999998
+          },
+          "day": 4.753799999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 248,
+          "kind": "daily_life",
+          "summary": "神社石阶下，几户人家的灯还亮着，有人在门口张望彗星，又缩回屋里。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "神社石阶下，几户人家的灯还亮着，有人在门口张望彗星，又缩回屋里。",
+              "location": "s-1",
+              "intensity": 0.1
+            }
+          },
+          "day": 4.753799999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 249,
+          "kind": "daily_life",
+          "summary": "「日记本」又经历了 2 次渐变，最后停在：日记本页角被风翻起又落下，卷曲的边角沾了点石阶上的尘土。（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "「日记本」又经历了 2 次渐变，最后停在：日记本页角被风翻起又落下，卷曲的边角沾了点石阶上的尘土。",
+              "location": "s-1",
+              "item": "i-1"
+            }
+          },
+          "day": 4.753799999999998,
+          "duration": 0.0
+        },
+        {
+          "turn": 250,
+          "kind": "daily_life",
+          "summary": "日记本的页角被夜风吹得更卷了些，沾了点露水（系守町神社）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "日记本的页角被夜风吹得更卷了些，沾了点露水",
+              "location": "s-1",
+              "intensity": 0.2,
+              "item": "i-1"
+            }
+          },
+          "day": 4.753799999999998,
+          "duration": 0.0
+        }
+      ],
+      "social": {
+        "n-1->proactive": 24,
+        "n-2->proactive": 125,
+        "reject|n-1": "上次的目标进度提升被驳回：提升必须给 because（引用真实发生的事）"
+      },
+      "social_clock": {
+        "n-1->proactive": 0.5004,
+        "n-2->proactive": 2.502
+      },
+      "wakeups": {
+        "n-1": 246
+      },
+      "pulse_last_turn": 244,
+      "pulse_last_clock": 4.753799999999998,
+      "turn": 250,
+      "associations": {
+        "s-1|s-3": 2.0,
+        "s-1|s-2": 1.0
+      },
+      "mood_value": 0.0,
+      "mood_reason": "",
+      "weather": "夏日·彗星将至",
+      "weather_intensity": 0.2,
+      "weather_reason": "世界生成",
+      "mood_word": "夜色里奔走的约定",
+      "facts": [
+        "交换身体时，记忆在醒来后模糊，但情感残留。",
+        "黄昏之时是两人唯一能真实相见的时刻，过后名字会遗忘。",
+        "彗星坠落是既定事件，但可以通过改变过去来避免。",
+        "绳结发饰是三叶的贴身物，象征联系。"
+      ],
+      "moments": [
+        {
+          "due_day": 1,
+          "what": "三叶与泷在梦中交换身体，彼此醒来时记忆模糊。",
+          "done": false,
+          "location": "s-1",
+          "repeat_days": 2.0,
+          "agency_patches": [
+            {
+              "body": "n-1",
+              "actor": "n-2",
+              "duration_days": 1,
+              "why": "泷的灵魂进入三叶身体"
+            },
+            {
+              "body": "n-2",
+              "actor": "n-1",
+              "duration_days": 1,
+              "why": "三叶的灵魂进入泷身体"
+            }
+          ],
+          "last_occurrence": 2
+        },
+        {
+          "due_day": 7,
+          "what": "黄昏之时，三叶与泷在彗星坑边短暂相见，之后遗忘对方名字。",
+          "done": false,
+          "location": "s-3",
+          "agency_patches": []
+        }
+      ],
+      "clock": 4.753799999999998,
+      "heartbeat": 0.0417,
+      "past_items": {
+        "i-2": {
+          "id": "i-2",
+          "name": "绳结发饰",
+          "history": [
+            {
+              "memory_id": "m-1-1",
+              "npc": "n-1",
+              "occurred_clock": -7000.0,
+              "then": "妈妈亲手系上"
+            }
+          ],
+          "current_assertions": [
+            {
+              "exists": true,
+              "source_memory": "m-1-1",
+              "note": "三叶一直戴着"
+            }
+          ],
+          "current_assertion": {
+            "exists": true,
+            "source_memory": "m-1-1",
+            "note": "三叶一直戴着"
+          }
+        }
+      },
+      "agency": {
+        "n-1": {
+          "actor": "n-2",
+          "started_clock": 4.0032,
+          "until_clock": 5.0032,
+          "cause": "泷的灵魂进入三叶身体"
+        },
+        "n-2": {
+          "actor": "n-1",
+          "started_clock": 4.0032,
+          "until_clock": 5.0032,
+          "cause": "三叶的灵魂进入泷身体"
+        }
+      }
+    }
+  },
+  "current": "世界"
+}

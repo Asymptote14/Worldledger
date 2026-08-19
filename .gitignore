@@ -1,0 +1,24 @@
+# 密钥与配置：绝不提交
+worldledger_config.json
+worldledger_config.local.json
+.env
+*.env
+
+# 运行时数据（存档 / 生成产物）
+worldledger_save/
+archive/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# 角色卡导出（玩家数据，按需提交）
+worldledger_cards/
+
+# 本地编辑器和系统文件
+.reasonix/
+.venv/
+venv/
+.pytest_cache/
+*.log

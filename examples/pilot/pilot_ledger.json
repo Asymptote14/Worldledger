@@ -1,0 +1,440 @@
+{
+  "worlds": {
+    "Pilot": {
+      "name": "Pilot",
+      "description": "一座永远在下雨的小城，人们撒谎时会漏出真心话",
+      "law_profile": {
+        "expectation": "一座永远在下雨的小城，人们撒谎时会漏出真心话",
+        "atmosphere": "雨·永续",
+        "laws": [
+          {
+            "id": "lie",
+            "trigger": "有人撒谎",
+            "effect": "撒谎者当场说漏一件真心话",
+            "intensity": 1.0
+          }
+        ],
+        "version": 0
+      },
+      "scenes": {
+        "s-station": {
+          "id": "s-station",
+          "name": "旧车站",
+          "description": "褪色的站台，长椅积水，时刻表永远停在午夜。",
+          "atmosphere": "",
+          "npcs": [
+            "n-zhou"
+          ],
+          "exits": [
+            "s-cafe"
+          ],
+          "hint": "褪色的站台，时刻表停在午夜",
+          "generated": true,
+          "memory_only": false,
+          "recent": [
+            {
+              "turn": 10,
+              "kind": "daily_life",
+              "summary": "水洼里的倒影被风吹碎（旧车站）"
+            },
+            {
+              "turn": 17,
+              "kind": "daily_life",
+              "summary": "檐角的猫躲进纸箱里（旧车站）"
+            },
+            {
+              "turn": 18,
+              "kind": "npc_acted",
+              "summary": "老周 主动：把柜台抽屉里的信记进值班簿"
+            }
+          ],
+          "items": [
+            {
+              "id": "i-letter",
+              "name": "一封信",
+              "note": "信封被雨打湿了一角",
+              "cause": "玩家取走",
+              "last_turn": 16,
+              "held_by": "player",
+              "cause_turn": 3
+            }
+          ],
+          "state_facts": [],
+          "crowd": "",
+          "history": []
+        },
+        "s-cafe": {
+          "id": "s-cafe",
+          "name": "街角咖啡店",
+          "description": "",
+          "atmosphere": "",
+          "npcs": [
+            "n-arin"
+          ],
+          "exits": [
+            "s-station",
+            "s-alley"
+          ],
+          "hint": "暖黄灯光的街角咖啡店",
+          "generated": false,
+          "memory_only": false,
+          "recent": [],
+          "items": [],
+          "state_facts": [],
+          "crowd": "",
+          "history": []
+        },
+        "s-alley": {
+          "id": "s-alley",
+          "name": "积水小巷",
+          "description": "",
+          "atmosphere": "",
+          "npcs": [
+            "n-man"
+          ],
+          "exits": [
+            "s-cafe"
+          ],
+          "hint": "积水的小巷，路灯忽明忽灭",
+          "generated": false,
+          "memory_only": false,
+          "recent": [],
+          "items": [],
+          "state_facts": [],
+          "crowd": "",
+          "history": []
+        }
+      },
+      "npcs": {
+        "n-arin": {
+          "id": "n-arin",
+          "name": "阿凛",
+          "persona": "街角咖啡店的店长，藏着秘密，雨天总是望着窗外。",
+          "traits": {
+            "爱说谎": true
+          },
+          "memories": [],
+          "memory_gaps": [],
+          "beliefs": [],
+          "goals": [
+            {
+              "id": "find-letter",
+              "progress": 0.0,
+              "text": "查明车站那封信是谁寄的"
+            },
+            {
+              "id": "cafe-alive",
+              "progress": 0.3,
+              "text": "守住这家咖啡店，别让它在雨里关门"
+            }
+          ],
+          "relationship": 0,
+          "state": {
+            "location": "s-cafe",
+            "activity": "待机",
+            "mood": "平静",
+            "mood_value": 0.0,
+            "mood_reason": "",
+            "last_turn": 1,
+            "last_clock": 0.0,
+            "last_time": "第1天·清晨",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "",
+              "targets": [],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 0
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        },
+        "n-zhou": {
+          "id": "n-zhou",
+          "name": "老周",
+          "persona": "旧车站的守夜人，说话慢，喜欢打听旅客的去向。",
+          "traits": {
+            "健谈": true
+          },
+          "memories": [
+            {
+              "turn": 2,
+              "content": "信封里装着给港务局的调令（只有我知道这件事）",
+              "importance": 1.0,
+              "keywords": [],
+              "id": "m-2",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-zhou"
+            }
+          ],
+          "memory_gaps": [],
+          "beliefs": [],
+          "goals": [],
+          "relationship": 0,
+          "state": {
+            "location": "s-station",
+            "activity": "查看时刻表",
+            "mood": "忧郁",
+            "mood_value": 0.0,
+            "mood_reason": "",
+            "last_turn": 16,
+            "last_clock": 0.5,
+            "last_time": "第1天·黄昏",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "",
+              "targets": [],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 0
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        },
+        "n-man": {
+          "id": "n-man",
+          "name": "小满",
+          "persona": "雨巷里的少年，总在等一封不会来的信。",
+          "traits": {
+            "执拗": true
+          },
+          "memories": [],
+          "memory_gaps": [],
+          "beliefs": [],
+          "goals": [
+            {
+              "id": "wait-letter",
+              "progress": 0.0,
+              "text": "等一封寄给自己的信"
+            }
+          ],
+          "relationship": 0,
+          "state": {
+            "location": "s-alley",
+            "activity": "待机",
+            "mood": "平静",
+            "mood_value": 0.0,
+            "mood_reason": "",
+            "last_turn": 1,
+            "last_clock": 0.0,
+            "last_time": "第1天·清晨",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "",
+              "targets": [],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 0
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        }
+      },
+      "doors": {},
+      "player": {
+        "location": "s-station"
+      },
+      "events": [
+        {
+          "turn": 1,
+          "kind": "world_created",
+          "summary": "世界「Pilot」诞生：雨·永续",
+          "cause": "创建世界命令",
+          "payload": {
+            "laws": [
+              "lie"
+            ]
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 2,
+          "kind": "npc_memory",
+          "summary": "老周 记住了：信封里装着给港务局的调令（只有我知道这件事）",
+          "cause": "Pilot 夹具",
+          "payload": {
+            "npc": "n-zhou",
+            "actor": "n-zhou",
+            "body": "n-zhou",
+            "started_clock": 0.0,
+            "ended_clock": 0.0
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 3,
+          "kind": "item_transfer",
+          "summary": "「一封信」被 player 拿走了（「旧车站」）",
+          "cause": "玩家取走",
+          "payload": {
+            "event_params": {
+              "item": "一封信",
+              "holder": "player",
+              "location": "s-station"
+            }
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 9,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "时间流逝",
+          "payload": {
+            "turns": 6,
+            "days": 0.25
+          },
+          "day": 0.0,
+          "duration": 0.25
+        },
+        {
+          "turn": 10,
+          "kind": "daily_life",
+          "summary": "水洼里的倒影被风吹碎（旧车站）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "水洼里的倒影被风吹碎",
+              "location": "s-station",
+              "intensity": 0.2
+            }
+          },
+          "day": 0.25,
+          "duration": 0.0
+        },
+        {
+          "turn": 16,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "时间流逝",
+          "payload": {
+            "turns": 6,
+            "days": 0.25
+          },
+          "day": 0.25,
+          "duration": 0.25
+        },
+        {
+          "turn": 17,
+          "kind": "daily_life",
+          "summary": "檐角的猫躲进纸箱里（旧车站）",
+          "cause": "世界演化",
+          "payload": {
+            "event_params": {
+              "detail": "檐角的猫躲进纸箱里",
+              "location": "s-station",
+              "intensity": 0.2
+            }
+          },
+          "day": 0.5,
+          "duration": 0.0
+        },
+        {
+          "turn": 18,
+          "kind": "npc_acted",
+          "summary": "老周 主动：把柜台抽屉里的信记进值班簿",
+          "cause": "Pilot 原子事件",
+          "payload": {
+            "event_params": {
+              "npc": "n-zhou",
+              "action": "把柜台抽屉里的信记进值班簿",
+              "location": "s-station",
+              "targets": [
+                "item:i-letter"
+              ],
+              "days": 0.0,
+              "body": "n-zhou",
+              "actor": "n-zhou",
+              "origin": "s-station"
+            }
+          },
+          "day": 0.5,
+          "duration": 0.0
+        }
+      ],
+      "social": {},
+      "social_clock": {},
+      "wakeups": {},
+      "pulse_last_turn": 16,
+      "pulse_last_clock": 0.5,
+      "turn": 18,
+      "associations": {},
+      "mood_value": 0.0,
+      "mood_reason": "",
+      "weather": "雨·永续",
+      "weather_intensity": 0.2,
+      "weather_reason": "世界生成",
+      "mood_word": "",
+      "facts": [],
+      "moments": [],
+      "clock": 0.5,
+      "heartbeat": 0.041666666666666664,
+      "past_items": {},
+      "agency": {}
+    }
+  },
+  "current": "Pilot"
+}

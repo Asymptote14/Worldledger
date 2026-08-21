@@ -6,6 +6,8 @@ worldledger_config.local.json
 
 # 运行时数据（存档 / 生成产物）
 worldledger_save/
+# 旧版本运行产物（不应公开）
+worldgate_save/
 archive/
 __pycache__/
 *.pyc

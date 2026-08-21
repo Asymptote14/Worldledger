@@ -5935,6 +5935,18 @@ class TestDemoRuns(unittest.TestCase):
         # 测试强制 Mock：不烧真实 API，且确定性
         demo.demo(llm=MockLLM())  # 不抛异常即通过
 
+    def test_pilot_runs_and_all_checks_pass(self):
+        """python -m tools.pilot 的可运行性 + 21 项断言全部通过。"""
+        from tools import pilot
+        with tempfile.TemporaryDirectory() as tmp:
+            result = pilot.run(Path(tmp))
+            self.assertEqual(result["total"], 21)
+            self.assertEqual(result["passed"], 21,
+                             [c for c in result["checks"] if not c["passed"]])
+            for name in ("pilot_ledger.json", "pilot_player_view.txt",
+                         "pilot_audit.md"):
+                self.assertTrue((Path(tmp) / name).exists(), name)
+
 
 if __name__ == "__main__":
     unittest.main()

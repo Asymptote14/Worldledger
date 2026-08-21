@@ -11,7 +11,7 @@ from worldledger import evolution, interpreter
 from worldledger.llm import get_llm
 from worldledger.worldgen import ensure_scene, generate_world
 
-DESC = "永远在下雨的东京，少女只要祈祷就能让天空放晴，但每次放晴，她都在一点点消失"
+DESC = "一座靠潮汐发电的海边小城，每次退潮都会露出一件被遗忘的物品"
 SEP = "\n" + "─" * 56 + "\n"
 
 
@@ -72,12 +72,12 @@ def main() -> None:
     print(f"人设：{hero.persona}")
     print(f"她的目标：{'、'.join(g['text'] for g in hero.goals)}")
     # 立绘提示词：文字世界到手后，脸只是一句提示词的事
-    print(f"立绘提示词：二次元立绘，{hero.persona}；"
+    print(f"立绘提示词：原创角色立绘，{hero.persona}；"
           f"世界观：{w.law_profile.atmosphere}，{w.description[:36]}；"
-          f"新海诚风格，雨，半身像")
+          f"海风，半身像")
 
     # 三问
-    questions = ["你叫什么名字？", "你能让雨停下来吗？",
+    questions = ["你叫什么名字？", "你为什么总在退潮前出门？",
                  "这么做，你要付出什么代价？"]
     for q in questions:
         r = interpreter.dialogue_turn(llm, w, hero, q)

@@ -3926,7 +3926,7 @@ class TestNpcActionability(unittest.TestCase):
         return w, w.npcs["n-arin"]
 
     @staticmethod
-    def _source(w, title="彗星坠落"):
+    def _source(w, title="重大事件"):
         emit(w, "world_event", {
             "title": title, "detail": f"{title}留下了无法忽略的痕迹",
             "location": "s-cafe", "intensity": 0.6}, cause="测试")
@@ -3946,13 +3946,13 @@ class TestNpcActionability(unittest.TestCase):
         plan = self._plan([{
             "type": "npc_state_changed",
             "params": {"npc": arin.id, "can_act": False,
-                       "condition": "彗星坠落后已经死亡",
+                       "condition": "重大事件后暂时停摆",
                        "cause_event": source}}])
         evolution.world_pulse(ScriptedLLM([plan]), w)
         self.assertFalse(arin.state.can_act)
         self.assertFalse(arin.in_fog)
-        self.assertEqual(arin.state.condition, "彗星坠落后已经死亡")
-        self.assertEqual(arin.state.activity, "彗星坠落后已经死亡")
+        self.assertEqual(arin.state.condition, "重大事件后暂时停摆")
+        self.assertEqual(arin.state.activity, "重大事件后暂时停摆")
         self.assertFalse(any(arin.id in scene.npcs
                              for scene in w.scenes.values()))
         event = next(e for e in reversed(w.events)
@@ -3963,7 +3963,7 @@ class TestNpcActionability(unittest.TestCase):
         w, arin = self._world()
         source = self._source(w)
         evolution.set_actionability(
-            w, arin, False, "彗星坠落后已经死亡", source)
+            w, arin, False, "重大事件后暂时停摆", source)
         stamp = arin.state.last_clock
         w.pass_time(12)
         evolution.world_pulse(ScriptedLLM([self._plan([])]), w)
@@ -3976,7 +3976,7 @@ class TestNpcActionability(unittest.TestCase):
         w, arin = self._world()
         fallen = self._source(w)
         evolution.set_actionability(
-            w, arin, False, "彗星坠落后已经死亡", fallen)
+            w, arin, False, "重大事件后暂时停摆", fallen)
         rewritten = self._source(w, "过去被改写")
         summaries = evolution.set_actionability(
             w, arin, True, "历史改写后仍然活着", rewritten)
@@ -3989,7 +3989,7 @@ class TestNpcActionability(unittest.TestCase):
     def test_state_change_rejects_unrecorded_cause(self):
         w, arin = self._world()
         summaries = evolution.set_actionability(
-            w, arin, False, "彗星坠落后已经死亡", "并不存在的事件")
+            w, arin, False, "重大事件后暂时停摆", "并不存在的事件")
         self.assertTrue(any("不在近期账本" in summary for summary in summaries))
         self.assertTrue(arin.state.can_act)
 
@@ -4007,7 +4007,7 @@ class TestNpcActionability(unittest.TestCase):
         source = self._source(w)
         summaries = evolution.set_actionability(
             w, arin, False,
-            "深夜独自前往彗星坑边，不慎滑落坑壁，昏迷在坑底", source)
+            "深夜独自前往北坡，不慎滑倒后暂时失去行动能力", source)
         self.assertTrue(any("超长" in summary for summary in summaries))
         self.assertTrue(arin.state.can_act)
 
@@ -4025,7 +4025,7 @@ class TestNpcActionability(unittest.TestCase):
         w, arin = self._world()
         source = self._source(w)
         evolution.set_actionability(
-            w, arin, False, "彗星坠落后已经死亡", source)
+            w, arin, False, "重大事件后暂时停摆", source)
         before = len(arin.memories)
         evolution.spread_rumor(None, w, "world_event", {
             "location": "s-cafe", "title": "新的异象"})
@@ -4035,7 +4035,7 @@ class TestNpcActionability(unittest.TestCase):
         w, arin = self._world()
         source = self._source(w)
         evolution.set_actionability(w, arin, False,
-                                   "彗星坠落后已经死亡", source)
+                                   "重大事件后暂时停摆", source)
         w.facts = ["旧法则"]
         w.pass_time(6)
         plan = self._plan([])
@@ -4342,45 +4342,45 @@ class TestCausalWorld(unittest.TestCase):
     def test_fact_changes_are_causal_and_traced(self):
         """世界设定是活的：增/删/改有因才变，留痕可回放。"""
         llm, w = self._world()
-        w.facts = ["梦中交换身体", "黄昏之时坑边相见"]
+        w.facts = ["夜间短暂交换行动权限", "黄昏时在旧堤相见"]
         w.pass_time(6)
         plan = json.dumps({
             "events": [], "npc_plans": [], "influences": [],
             "daily_bits": [], "new_scenes": [], "item_patches": [],
             "new_npcs": [], "crowds": [],
             "fact_changes": [
-                {"op": "change", "old": "梦中交换身体",
-                 "fact": "流星过后，交换无法再发生",
-                 "why": "彗星坠落，连接两人的梦断裂了"},
+                {"op": "change", "old": "夜间短暂交换行动权限",
+                 "fact": "潮汐窗口过后，交换无法再发生",
+                 "why": "潮汐塔停机，连接两人的信号中断了"},
             ]}, ensure_ascii=False)
         summaries = evolution.world_pulse(ScriptedLLM([plan]), w)
-        self.assertIn("流星过后，交换无法再发生", w.facts)
-        self.assertNotIn("梦中交换身体", w.facts)
+        self.assertIn("潮汐窗口过后，交换无法再发生", w.facts)
+        self.assertNotIn("夜间短暂交换行动权限", w.facts)
         ev = [e for e in w.events if e.kind == "fact_changed"]
         self.assertTrue(ev)
-        self.assertEqual(ev[-1].cause, "彗星坠落，连接两人的梦断裂了")
+        self.assertEqual(ev[-1].cause, "潮汐塔停机，连接两人的信号中断了")
         self.assertTrue(any("设定变了" in s for s in summaries))
 
     def test_fact_change_without_why_rejected(self):
         """有因才变：没写为什么的设定变更被驳回。"""
         llm, w = self._world()
-        w.facts = ["梦中交换身体"]
+        w.facts = ["夜间短暂交换行动权限"]
         w.pass_time(6)
         plan = json.dumps({
             "events": [], "npc_plans": [], "influences": [],
             "daily_bits": [], "new_scenes": [], "item_patches": [],
             "new_npcs": [], "crowds": [],
             "fact_changes": [
-                {"op": "remove", "old": "梦中交换身体", "why": ""},
+                {"op": "remove", "old": "夜间短暂交换行动权限", "why": ""},
             ]}, ensure_ascii=False)
         summaries = evolution.world_pulse(ScriptedLLM([plan]), w)
         self.assertTrue(any("原因必填" in s for s in summaries))
-        self.assertEqual(w.facts, ["梦中交换身体"])  # 没动
+        self.assertEqual(w.facts, ["夜间短暂交换行动权限"])  # 没动
 
     def test_no_change_updates_are_dropped(self):
         """无变化不重复入账：事实改写成原样、天气覆写同状态都被拒。"""
         llm, w = self._world()
-        w.facts = ["梦中交换身体"]
+        w.facts = ["夜间短暂交换行动权限"]
         w.weather = "暴雨"
         w.pass_time(6)
         plan = json.dumps({
@@ -4390,15 +4390,15 @@ class TestCausalWorld(unittest.TestCase):
             "daily_bits": [], "new_scenes": [], "item_patches": [],
             "new_npcs": [], "crowds": [],
             "fact_changes": [
-                {"op": "change", "old": "梦中交换身体",
-                 "fact": "梦中交换身体", "why": "想强调一遍"},
+                {"op": "change", "old": "夜间短暂交换行动权限",
+                 "fact": "夜间短暂交换行动权限", "why": "想强调一遍"},
             ]}, ensure_ascii=False)
         evolution.world_pulse(ScriptedLLM([plan]), w)
         self.assertFalse(any(e.kind == "weather_shift"
                              for e in w.events))  # 同状态天气不重复
         self.assertFalse(any(e.kind == "fact_changed"
                              for e in w.events))  # 无变化事实不重复
-        self.assertEqual(w.facts, ["梦中交换身体"])
+        self.assertEqual(w.facts, ["夜间短暂交换行动权限"])
 
     def test_acting_in_scene_marks_it_seen(self):
         """你做过事的地方不是「你不在的地方」：行动推进 seen 进度。
@@ -4444,7 +4444,7 @@ class TestCausalWorld(unittest.TestCase):
         """既定时刻：到点必发、只发一次、有因留痕。"""
         llm, w = self._world()
         w.heartbeat = 1.0 / 6  # 6 心跳 = 1 天
-        w.moments = [{"due_day": 3, "what": "彗星落下，系守镇被击中",
+        w.moments = [{"due_day": 3, "what": "潮汐窗口开启，旧堤被淹",
                       "done": False}]
         for _ in range(6):
             w.pass_time(6)
@@ -4453,7 +4453,7 @@ class TestCausalWorld(unittest.TestCase):
                 break
         self.assertTrue(w.moments[0]["done"])
         evs = [e for e in w.events if e.kind == "world_event"
-               and "彗星落下" in e.summary]
+                and "潮汐窗口开启" in e.summary]
         self.assertEqual(len(evs), 1)  # 只发一次
         self.assertEqual(evs[0].cause, "既定时刻")
 
@@ -5329,12 +5329,12 @@ class TestHardening(unittest.TestCase):
         base = {
             "atmosphere": "梦·交错", "laws": [],
             "scenes": [{"id": "s-a", "name": "甲地", "description": "x",
-                        "npcs": ["n-grandma", "n-taki"], "exits": [],
+                        "npcs": ["n-c", "n-b"], "exits": [],
                         "items": []}],
             "npcs": [
-                {"id": "n-grandma", "name": "宫水一叶",
+                {"id": "n-c", "name": "角色丙",
                  "persona": "人设", "goals": []},
-                {"id": "n-taki", "name": "立花泷",
+                {"id": "n-b", "name": "角色乙",
                  "persona": "人设", "goals": []},
             ],
             "facts": [], "moments": [], "heartbeat": 1.0 / 24.0,
@@ -5349,22 +5349,22 @@ class TestHardening(unittest.TestCase):
         bad_binding["moments"] = [{
             "due_day": 1, "what": "第一次互换",
             "agency_patches": [{
-                "body": "n-grandma", "actor": "n-taki",
-                "duration_days": 1, "why": "泷通过三叶的身体行动",
+                 "body": "n-c", "actor": "n-b",
+                 "duration_days": 1, "why": "角色乙通过角色甲的身体行动",
             }],
         }]
         with self.assertRaisesRegex(worldgen.WorldGenError, "身体文字与引用"):
             worldgen._build_world("世界", DESC, bad_binding)
 
         missing_restore = json.loads(json.dumps(base))
-        missing_restore["scenes"][0]["npcs"] = ["n-grandma", "n-taki"]
+        missing_restore["scenes"][0]["npcs"] = ["n-c", "n-b"]
         missing_restore["moments"] = [{
             "due_day": 1, "what": "第一次互换",
             "agency_patches": [{
-                "body": "n-taki", "actor": "n-grandma",
+                 "body": "n-b", "actor": "n-c",
                 "duration_days": 1, "why": "行动归属交换",
             }, {
-                "body": "n-grandma", "actor": "n-taki",
+                 "body": "n-c", "actor": "n-b",
                 "duration_days": 1, "why": "行动归属交换",
             }],
         }, {
@@ -5372,17 +5372,17 @@ class TestHardening(unittest.TestCase):
             "agency_patches": [],
         }]
         with self.assertRaisesRegex(worldgen.WorldGenError, "归位/恢复 moment"):
-            worldgen._build_world("世界", "两人发生身体互换", missing_restore)
+            worldgen._build_world("世界", "两个角色交换身体", missing_restore)
 
         valid = json.loads(json.dumps(base))
-        valid["scenes"][0]["npcs"] = ["n-mitsuha", "n-taki"]
-        valid["npcs"][0] = {"id": "n-mitsuha", "name": "宫水三叶",
+        valid["scenes"][0]["npcs"] = ["n-a", "n-b"]
+        valid["npcs"][0] = {"id": "n-a", "name": "角色甲",
                               "persona": "人设", "goals": []}
         valid["moments"] = [{
             "due_day": 1, "what": "第一次互换",
             "agency_patches": [{
-                "body": "n-mitsuha", "actor": "n-taki",
-                "duration_days": 1, "why": "泷通过三叶的身体行动",
+                 "body": "n-a", "actor": "n-b",
+                 "duration_days": 1, "why": "角色乙通过角色甲的身体行动",
             }],
         }]
         worldgen._build_world("世界", DESC, valid)

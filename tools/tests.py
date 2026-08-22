@@ -6090,25 +6090,30 @@ class TestItemCausalityCarHitsPlayer(unittest.TestCase):
         return runtime_from_world(world)
 
     def test_collision_bridges_to_state_runtime_before_world_commit(self):
-        """Proposal -> prepare -> one WorldLedger commit -> runtime commit."""
+        """Proposal -> prepare -> one WorldLedger commit; no second ledger."""
         w = self._world()
         runtime = self._state_runtime(w)
+        def forbidden_commit(_prepared):
+            self.fail("validator mode must not commit a second event log")
+        runtime.commit_prepared = forbidden_commit
         before = len(w.events)
         summaries = evolution.commit_entity_event(
             w, self._crash_proposal(), state_runtime=runtime)
         self.assertFalse(any("驳回" in s for s in summaries), summaries)
-        self.assertEqual(len(runtime.events), 1)
+        self.assertEqual(len(runtime.events), 0)
         self.assertEqual(len(w.events) - before, 4)  # root + three projections
         root = w.events[before]
         audit = root.payload["state_runtime"]
-        self.assertEqual(audit["status"], "committed")
+        self.assertEqual(audit["status"], "validated")
         self.assertTrue(audit["proposal_created"])
         self.assertEqual(audit["validation"], "passed")
         self.assertTrue(audit["prepared"])
+        self.assertEqual(audit["mode"], "validator")
         self.assertEqual(set(audit["entity_ids"]), {
             "item:i-car", "player", "scene:s-alley"})
-        self.assertIn("撞停", runtime.entities["item:i-car"].state["note"])
-        self.assertIs(runtime.entities["player"].state["can_act"], False)
+        self.assertEqual(runtime.entities["item:i-car"].state["note"],
+                         "行驶中，速度很快")
+        self.assertIs(runtime.entities["player"].state["can_act"], True)
 
     def test_state_runtime_rejection_writes_neither_side(self):
         """A stale generic projection rejects before either ledger changes."""

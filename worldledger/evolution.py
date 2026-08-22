@@ -875,9 +875,9 @@ def commit_entity_event(world: World, proposal: dict, *,
     """原子提交一个多实体事实及其后果；预演失败时真实世界零写入。
 
     When ``state_runtime`` is supplied, the normalized event is first checked
-    by the optional generic runtime.  The existing WorldLedger transaction
-    remains the domain commit path; the generic event is committed only after
-    that path succeeds, so both sides observe one accepted proposal.
+    by the optional generic runtime.  ``StateRuntime`` is deliberately used as
+    a side-effect-free validator here; WorldLedger remains the only committed
+    state and event log, avoiding two independently advancing ledgers.
     """
     normalized, errors = _normalize_entity_event(world, proposal)
     if errors:
@@ -899,18 +899,14 @@ def commit_entity_event(world: World, proposal: dict, *,
     if errors:  # 单线程下预演与提交应完全一致；保留显式故障而不静默吞掉。
         raise RuntimeError("多实体事件预演与提交不一致：" + "；".join(errors))
     if prepared_runtime_event is not None:
-        try:
-            runtime_event = state_runtime.commit_prepared(prepared_runtime_event)
-        except Exception as exc:
-            raise RuntimeError("StateRuntime 预提交与 WorldLedger 提交不一致") from exc
         root = world.events[event_count_before]
         root.payload["state_runtime"] = {
-            "status": "committed",
+            "status": "validated",
             "proposal_created": True,
             "validation": "passed",
             "prepared": True,
-            "event_id": runtime_event.event_id,
-            "entity_ids": list(runtime_event.entity_ids),
+            "mode": "validator",
+            "entity_ids": list(prepared_runtime_event.event.entity_ids),
         }
     return summaries
 

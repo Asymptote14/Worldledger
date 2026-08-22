@@ -2202,6 +2202,39 @@ class TestEntityEventTransaction(unittest.TestCase):
             e.payload.get("state_runtime") for e in w.events[before + 1:]
         ))
 
+    def test_world_pulse_runtime_validation_rejects_without_partial_write(self):
+        """心跳入口的悬空引用/错场景均零写入。"""
+        try:
+            import state_runtime  # noqa: F401
+        except ImportError as exc:
+            self.skipTest(str(exc))
+        cases = [("missing", "i-ghost-car"), ("wrong_location", "i-car")]
+        for kind, car_id in cases:
+            with self.subTest(kind=kind):
+                w = self._world_with_car()
+                if kind == "wrong_location":
+                    w.player["location"] = "s-station"
+                w.pass_time(6)
+                plan = json.dumps({
+                    "events": [],
+                    "entity_events": [self._collision(item=car_id)],
+                    "npc_plans": [], "daily_bits": [], "new_npcs": [],
+                    "new_scenes": [], "item_patches": [], "crowds": [],
+                }, ensure_ascii=False)
+                before_events = len(w.events)
+                before_note = next(
+                    i["note"] for i in w.scenes["s-cafe"].items
+                    if i.get("id") == "i-car")
+                summaries = evolution.world_pulse(
+                    ScriptedLLM([plan]), w, use_state_runtime=True)
+                self.assertTrue(any("驳回" in s for s in summaries), summaries)
+                self.assertEqual(len(w.events), before_events)
+                self.assertEqual(next(
+                    i["note"] for i in w.scenes["s-cafe"].items
+                    if i.get("id") == "i-car"), before_note)
+                self.assertNotIn("can_act", w.player)
+                self.assertFalse(w.scenes["s-cafe"].state_facts)
+
     def test_collision_adds_expiring_local_scene_consequence_atomically(self):
         """同一事件可留下局部短时环境后果，并由世界钟自动结束。"""
         w = self._world_with_car()

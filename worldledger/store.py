@@ -395,6 +395,8 @@ def scene_changes(world: "World", scene_id: str, since_turn: int,
         elif e.kind == "npc_moved":
             hit = (params.get("from") == scene_id
                    or params.get("to") == scene_id)
+        elif e.kind == "npc_interaction":
+            hit = params.get("location") == scene_id
         elif e.kind in ("daily_life", "scene_state_changed"):
             hit = params.get("location") == scene_id
             if e.kind == "scene_state_changed":

@@ -4286,6 +4286,9 @@ class TestCausalWorld(unittest.TestCase):
         emit(w, "daily_life",
              {"detail": "台阶的沟又深了", "location": "s-station",
               "intensity": 0.2, "item": "i-letter"}, cause="测试")
+        emit(w, "npc_interaction",
+             {"npc": "n-arin", "target": "n-man",
+              "line": "雨还没有停。", "location": "s-station"}, cause="测试")
         evolution.move_npc(w, w.npcs["n-man"], "s-station", cause="测试")
         changes = scene_changes(w, "s-station", stamp, limit=4)
         self.assertTrue(changes)
@@ -4293,6 +4296,7 @@ class TestCausalWorld(unittest.TestCase):
         self.assertTrue(all(c["cause"] for c in changes))
         kinds = {c["kind"] for c in changes}
         self.assertIn("item_changed", kinds)
+        self.assertIn("npc_interaction", kinds)
         self.assertIn("npc_moved", kinds)  # 谁来过/离开
         self.assertLessEqual(len(changes), 4)  # 有界
 

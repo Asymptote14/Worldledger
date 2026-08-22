@@ -1,0 +1,53 @@
+{
+  "event_id": 1,
+  "clock": 0.0,
+  "duration": 0.0,
+  "cause": "多实体事件",
+  "entity_ids": [
+    "item:i-pilot-car",
+    "player",
+    "scene:s-alley"
+  ],
+  "changes": [
+    {
+      "entity_id": "item:i-pilot-car",
+      "patch": {
+        "location": "s-alley",
+        "note": "撞停，车头凹陷"
+      }
+    },
+    {
+      "entity_id": "player",
+      "patch": {
+        "can_act": false,
+        "condition": "被车撞伤"
+      }
+    },
+    {
+      "entity_id": "scene:s-alley",
+      "patch": {
+        "last_local_consequence": {
+          "id": null,
+          "text": "路面留下轮胎擦痕",
+          "duration_days": 1
+        }
+      }
+    }
+  ],
+  "visible_to": [],
+  "metadata": {
+    "worldledger_kind": "world_event",
+    "title": "行驶中的车撞到玩家",
+    "location": "s-alley",
+    "refs": [
+      "item:i-pilot-car",
+      "player",
+      "scene:s-alley"
+    ]
+  },
+  "scope": [
+    "item:i-pilot-car",
+    "player",
+    "scene:s-alley"
+  ]
+}

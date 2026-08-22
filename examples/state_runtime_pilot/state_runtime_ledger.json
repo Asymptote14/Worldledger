@@ -1,0 +1,516 @@
+{
+  "worlds": {
+    "State Runtime Pilot": {
+      "name": "State Runtime Pilot",
+      "description": "一座永远在下雨的小城，人们撒谎时会漏出真心话",
+      "law_profile": {
+        "expectation": "一座永远在下雨的小城，人们撒谎时会漏出真心话",
+        "atmosphere": "雨·永续",
+        "laws": [
+          {
+            "id": "lie",
+            "trigger": "有人撒谎",
+            "effect": "撒谎者当场说漏一件真心话",
+            "intensity": 1.0
+          }
+        ],
+        "version": 0
+      },
+      "scenes": {
+        "s-station": {
+          "id": "s-station",
+          "name": "旧车站",
+          "description": "褪色的站台，长椅积水，时刻表永远停在午夜。",
+          "atmosphere": "",
+          "npcs": [
+            "n-zhou"
+          ],
+          "exits": [
+            "s-cafe"
+          ],
+          "hint": "褪色的站台，时刻表停在午夜",
+          "generated": true,
+          "memory_only": false,
+          "recent": [],
+          "items": [
+            {
+              "id": "i-letter",
+              "name": "一封信",
+              "note": "信封被雨打湿了一角",
+              "cause": "世界生成",
+              "last_turn": 1
+            }
+          ],
+          "state_facts": [],
+          "crowd": "",
+          "history": []
+        },
+        "s-cafe": {
+          "id": "s-cafe",
+          "name": "街角咖啡店",
+          "description": "",
+          "atmosphere": "",
+          "npcs": [
+            "n-arin"
+          ],
+          "exits": [
+            "s-station",
+            "s-alley"
+          ],
+          "hint": "暖黄灯光的街角咖啡店",
+          "generated": false,
+          "memory_only": false,
+          "recent": [],
+          "items": [],
+          "state_facts": [],
+          "crowd": "",
+          "history": []
+        },
+        "s-alley": {
+          "id": "s-alley",
+          "name": "积水小巷",
+          "description": "窄巷两侧旧墙，路灯忽明忽灭，水洼倒映着天。",
+          "atmosphere": "",
+          "npcs": [
+            "n-man"
+          ],
+          "exits": [
+            "s-cafe"
+          ],
+          "hint": "积水的小巷，路灯忽明忽灭",
+          "generated": true,
+          "memory_only": false,
+          "recent": [
+            {
+              "turn": 2,
+              "kind": "scene_generated",
+              "summary": "贴片「积水小巷」首次生成"
+            },
+            {
+              "turn": 3,
+              "kind": "item_added",
+              "summary": "「面包车」出现在「积水小巷」（正在行驶）"
+            },
+            {
+              "turn": 10,
+              "kind": "world_event",
+              "summary": "行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。"
+            },
+            {
+              "turn": 11,
+              "kind": "scene_state_changed",
+              "summary": "「积水小巷」的局部状态：路面留下轮胎擦痕"
+            },
+            {
+              "turn": 12,
+              "kind": "item_changed",
+              "summary": "「面包车」变了：「积水小巷」（撞停，车头凹陷）"
+            }
+          ],
+          "items": [
+            {
+              "id": "i-pilot-car",
+              "name": "面包车",
+              "note": "撞停，车头凹陷",
+              "cause": "事件#10：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+              "last_turn": 11,
+              "cause_turn": 12
+            }
+          ],
+          "state_facts": [
+            {
+              "id": "pilot-tire-marks",
+              "since_clock": 0.25,
+              "source_event": 10,
+              "text": "路面留下轮胎擦痕",
+              "expires_clock": 1.25,
+              "last_cause": "事件#10：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。"
+            }
+          ],
+          "crowd": "",
+          "history": []
+        }
+      },
+      "npcs": {
+        "n-arin": {
+          "id": "n-arin",
+          "name": "阿凛",
+          "persona": "街角咖啡店的店长，藏着秘密，雨天总是望着窗外。",
+          "traits": {
+            "爱说谎": true
+          },
+          "memories": [],
+          "memory_gaps": [],
+          "beliefs": [],
+          "goals": [
+            {
+              "id": "find-letter",
+              "progress": 0.0,
+              "text": "查明车站那封信是谁寄的"
+            },
+            {
+              "id": "cafe-alive",
+              "progress": 0.3,
+              "text": "守住这家咖啡店，别让它在雨里关门"
+            }
+          ],
+          "relationship": 0,
+          "state": {
+            "location": "s-cafe",
+            "activity": "待机",
+            "mood": "平静",
+            "mood_value": 0.0,
+            "mood_reason": "",
+            "last_turn": 1,
+            "last_clock": 0.0,
+            "last_time": "第1天·清晨",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "",
+              "targets": [],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 0
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        },
+        "n-zhou": {
+          "id": "n-zhou",
+          "name": "老周",
+          "persona": "旧车站的守夜人，说话慢，喜欢打听旅客的去向。",
+          "traits": {
+            "健谈": true
+          },
+          "memories": [],
+          "memory_gaps": [],
+          "beliefs": [],
+          "goals": [],
+          "relationship": 0,
+          "state": {
+            "location": "s-station",
+            "activity": "待机",
+            "mood": "平静",
+            "mood_value": 0.0,
+            "mood_reason": "",
+            "last_turn": 1,
+            "last_clock": 0.0,
+            "last_time": "第1天·清晨",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "",
+              "targets": [],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 0
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        },
+        "n-man": {
+          "id": "n-man",
+          "name": "小满",
+          "persona": "雨巷里的少年，总在等一封不会来的信。",
+          "traits": {
+            "执拗": true
+          },
+          "memories": [
+            {
+              "turn": 13,
+              "content": "我看见：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+              "importance": 0.7,
+              "keywords": [],
+              "id": "m-13",
+              "occurred_clock": null,
+              "projections": [],
+              "accessible": true,
+              "access_cause": "",
+              "embodied_as": "n-man"
+            }
+          ],
+          "memory_gaps": [],
+          "beliefs": [],
+          "goals": [
+            {
+              "id": "wait-letter",
+              "progress": 0.0,
+              "text": "等一封寄给自己的信"
+            }
+          ],
+          "relationship": 0,
+          "state": {
+            "location": "s-alley",
+            "activity": "待机",
+            "mood": "平静",
+            "mood_value": 0.0,
+            "mood_reason": "",
+            "last_turn": 1,
+            "last_clock": 0.0,
+            "last_time": "第1天·清晨",
+            "pending_opener": "",
+            "memory_focus": [],
+            "facts": [],
+            "action": {
+              "text": "",
+              "location": "",
+              "actor_id": "",
+              "started_clock": 0.0,
+              "due_clock": 0.0,
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "targets": [],
+              "requires": [],
+              "source_turn": 0,
+              "progress": 0.0
+            },
+            "intent": {
+              "text": "",
+              "targets": [],
+              "earliest_clock": 0.0,
+              "latest_clock": 0.0,
+              "since_turn": 0
+            },
+            "can_act": true,
+            "condition": ""
+          },
+          "in_fog": false,
+          "fog_note": "",
+          "links": {}
+        }
+      },
+      "doors": {},
+      "player": {
+        "location": "s-alley",
+        "can_act": false,
+        "condition": "被车撞伤",
+        "condition_cause_turn": 10
+      },
+      "events": [
+        {
+          "turn": 1,
+          "kind": "world_created",
+          "summary": "世界「State Runtime Pilot」诞生：雨·永续",
+          "cause": "创建世界命令",
+          "payload": {
+            "laws": [
+              "lie"
+            ]
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 2,
+          "kind": "scene_generated",
+          "summary": "贴片「积水小巷」首次生成",
+          "cause": "贴片生成",
+          "payload": {
+            "event_params": {
+              "scene": "s-alley"
+            }
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 3,
+          "kind": "item_added",
+          "summary": "「面包车」出现在「积水小巷」（正在行驶）",
+          "cause": "Pilot 布置",
+          "payload": {
+            "event_params": {
+              "item": "i-pilot-car",
+              "name": "面包车",
+              "location": "s-alley",
+              "note": "正在行驶"
+            }
+          },
+          "day": 0.0,
+          "duration": 0.0
+        },
+        {
+          "turn": 9,
+          "kind": "time_passed",
+          "summary": "时间流逝 6 回合（0.25 天）",
+          "cause": "Pilot 等待",
+          "payload": {
+            "turns": 6,
+            "days": 0.25
+          },
+          "day": 0.0,
+          "duration": 0.25
+        },
+        {
+          "turn": 10,
+          "kind": "world_event",
+          "summary": "行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+          "cause": "多实体事件",
+          "payload": {
+            "event_params": {
+              "title": "行驶中的车撞到玩家",
+              "detail": "车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+              "location": "s-alley",
+              "intensity": 0.9,
+              "refs": [
+                "item:i-pilot-car",
+                "player",
+                "scene:s-alley"
+              ]
+            },
+            "consequences": {
+              "item_patches": [
+                {
+                  "op": "change",
+                  "item": "i-pilot-car",
+                  "location": "s-alley",
+                  "note": "撞停，车头凹陷"
+                }
+              ],
+              "scene_state_patches": [
+                {
+                  "scene": "s-alley",
+                  "op": "add",
+                  "fact": "pilot-tire-marks",
+                  "text": "路面留下轮胎擦痕",
+                  "duration_days": 1
+                }
+              ],
+              "actor_patches": [
+                {
+                  "target": "player",
+                  "can_act": false,
+                  "condition": "被车撞伤"
+                }
+              ],
+              "state_fact_patches": [],
+              "item_actions": [],
+              "completes": []
+            },
+            "state_runtime": {
+              "status": "validated",
+              "proposal_created": true,
+              "validation": "passed",
+              "prepared": true,
+              "mode": "validator",
+              "entity_ids": [
+                "item:i-pilot-car",
+                "player",
+                "scene:s-alley"
+              ]
+            }
+          },
+          "day": 0.25,
+          "duration": 0.0
+        },
+        {
+          "turn": 11,
+          "kind": "scene_state_changed",
+          "summary": "「积水小巷」的局部状态：路面留下轮胎擦痕",
+          "cause": "事件#10：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+          "payload": {
+            "event_params": {
+              "scene": "s-alley",
+              "fact": "pilot-tire-marks",
+              "op": "add",
+              "text": "路面留下轮胎擦痕",
+              "expires_clock": 1.25
+            }
+          },
+          "day": 0.25,
+          "duration": 0.0
+        },
+        {
+          "turn": 12,
+          "kind": "item_changed",
+          "summary": "「面包车」变了：「积水小巷」（撞停，车头凹陷）",
+          "cause": "事件#10：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+          "payload": {
+            "event_params": {
+              "item": "i-pilot-car",
+              "name": "面包车",
+              "location": "s-alley",
+              "note": "撞停，车头凹陷"
+            }
+          },
+          "day": 0.25,
+          "duration": 0.0
+        },
+        {
+          "turn": 13,
+          "kind": "npc_memory",
+          "summary": "小满 记住了：我看见：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+          "cause": "事件#10：行驶中的车撞到玩家：车辆撞到站在巷口的玩家，车轮在湿路面留下擦痕。",
+          "payload": {
+            "npc": "n-man",
+            "actor": "n-man",
+            "body": "n-man",
+            "started_clock": 0.25,
+            "ended_clock": 0.25
+          },
+          "day": 0.25,
+          "duration": 0.0
+        }
+      ],
+      "social": {},
+      "social_clock": {},
+      "wakeups": {
+        "n-man": 12
+      },
+      "pulse_last_turn": 9,
+      "pulse_last_clock": 0.25,
+      "turn": 13,
+      "associations": {},
+      "mood_value": 0.0,
+      "mood_reason": "",
+      "weather": "雨·永续",
+      "weather_intensity": 0.2,
+      "weather_reason": "世界生成",
+      "mood_word": "",
+      "facts": [],
+      "moments": [],
+      "clock": 0.25,
+      "heartbeat": 0.041666666666666664,
+      "past_items": {},
+      "agency": {}
+    }
+  },
+  "current": "State Runtime Pilot"
+}

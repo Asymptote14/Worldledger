@@ -6190,6 +6190,19 @@ class TestItemCausalityCarHitsPlayer(unittest.TestCase):
 
 
 class TestDemoRuns(unittest.TestCase):
+    def test_state_runtime_pilot_runs(self):
+        try:
+            from tools import state_runtime_pilot
+        except ImportError as exc:
+            self.skipTest(str(exc))
+        with tempfile.TemporaryDirectory() as tmp:
+            result = state_runtime_pilot.run(Path(tmp))
+            self.assertEqual(result["passed"], result["total"])
+            for name in ("state_runtime_proposal.json",
+                         "state_runtime_ledger.json",
+                         "state_runtime_audit.md"):
+                self.assertTrue((Path(tmp) / name).exists(), name)
+
     def test_cli_state_runtime_switch_is_opt_in(self):
         from worldledger import main as main_mod
         with patch.dict(os.environ, {}, clear=False):

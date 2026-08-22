@@ -113,7 +113,8 @@ python -m tools.demo
 
 ## 当前验证范围
 
-- 仓库包含 329 项本地回归测试，覆盖存档往返、引用完整性、知识边界、行动时序、记忆归属、物品转移和多实体事件等机制。
+- 仓库包含 330 项本地回归测试，覆盖存档往返、引用完整性、知识边界、行动时序、记忆归属、物品转移和多实体事件等机制；另有 `state-runtime` 桥接 Pilot 验证通用 Proposal、
+  当前状态校验和 WorldLedger 的唯一提交。
 - Mock 模式是确定性的，适合验证引擎纪律和快速体验，不代表真实模型的生成质量。
 - 公开 Pilot 展示了一个原创、低成本、可复现的状态校验案例，但单个样例不能证明跨模型、跨世界的普遍性能。
 - 对照实验应固定模型、预算、玩家输入和评分规则；具体协议见 [`docs/EVALUATION_PROTOCOLS.md`](docs/EVALUATION_PROTOCOLS.md)。
@@ -129,6 +130,14 @@ python -m tools.pilot
 ```
 
 全 Mock、零成本、无 API key，21 项断言覆盖知识边界、物品不回流、原子多实体事件、失败无部分提交、有因可追溯与同种子可复现；产物写入 `examples/pilot/`（账本 JSON、玩家视角文本、审计报告）。
+
+安装独立的 `state-runtime` 包或将其源码目录加入 `PYTHONPATH` 后，可以运行桥接 Pilot：
+
+```powershell
+python -m tools.state_runtime_pilot
+```
+
+产物写入 `examples/state_runtime_pilot/`，包含通用 Proposal、最终账本和审计报告。
 
 ## 目录
 

@@ -2177,6 +2177,31 @@ class TestEntityEventTransaction(unittest.TestCase):
         self.assertTrue(any("无法移动" in error for error in errors))
         self.assertEqual(w.player["location"], old_location)
 
+    def test_world_pulse_can_validate_entity_event_with_state_runtime(self):
+        """真实心跳路径可选择启用 StateRuntime 的无副作用校验。"""
+        try:
+            import state_runtime  # noqa: F401
+        except ImportError as exc:
+            self.skipTest(str(exc))
+        w = self._world_with_car()
+        w.pass_time(6)
+        plan = json.dumps({
+            "events": [], "entity_events": [self._collision()],
+            "npc_plans": [], "daily_bits": [], "new_npcs": [],
+            "new_scenes": [], "item_patches": [], "crowds": [],
+        }, ensure_ascii=False)
+        before = len(w.events)
+        summaries = evolution.world_pulse(
+            ScriptedLLM([plan]), w, use_state_runtime=True)
+        self.assertFalse(any("StateRuntime" in s for s in summaries), summaries)
+        root = w.events[before]
+        audit = root.payload["state_runtime"]
+        self.assertEqual(audit["status"], "validated")
+        self.assertEqual(audit["mode"], "validator")
+        self.assertFalse(any(
+            e.payload.get("state_runtime") for e in w.events[before + 1:]
+        ))
+
     def test_collision_adds_expiring_local_scene_consequence_atomically(self):
         """同一事件可留下局部短时环境后果，并由世界钟自动结束。"""
         w = self._world_with_car()

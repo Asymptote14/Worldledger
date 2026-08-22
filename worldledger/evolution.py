@@ -2511,7 +2511,8 @@ def _commit_scheduled_moments(world: World) -> tuple[list[str], set[str], set[st
     return summaries, changed, scheduled_bodies
 
 
-def world_pulse(llm: BaseLLM, world: World) -> list[str]:
+def world_pulse(llm: BaseLLM, world: World, *,
+                use_state_runtime: bool = False) -> list[str]:
     """统一心跳：一次裁决，自治整个世界（事件 / NPC / 流言 / 生长）。
 
     - 距离分层决定「谁进入裁决窗口」（近密远疏）；雾中贴片冻结。
@@ -2739,7 +2740,8 @@ def world_pulse(llm: BaseLLM, world: World) -> list[str]:
     entity_events = data.get("entity_events", [])
     if isinstance(entity_events, list):
         for proposal in entity_events[:1]:
-            summaries.extend(commit_entity_event(world, proposal))
+            summaries.extend(commit_entity_event(
+                world, proposal, use_state_runtime=use_state_runtime))
 
     # 1.55) 独立的局部场景后果：短时环境变化不覆写全局天气。
     for patch in data.get("scene_state_patches", [])[:8]:

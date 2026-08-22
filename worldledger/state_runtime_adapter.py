@@ -80,6 +80,17 @@ def runtime_from_world(world: Any) -> StateRuntime:
     return StateRuntime(entities_from_world(world))
 
 
+def prepare_current_world_event(world: Any, normalized: dict):
+    """Validate one event against a fresh projection of the current world.
+
+    The returned prepared event is intentionally not committed.  The caller
+    keeps WorldLedger as the sole state owner and event log.
+    """
+    runtime = runtime_from_world(world)
+    proposal = proposal_from_normalized(world, normalized)
+    return runtime.prepare(proposal)
+
+
 def proposal_from_normalized(world: Any, normalized: dict) -> Proposal:
     """Translate a validated WorldLedger entity event into a Proposal.
 
@@ -144,4 +155,3 @@ def proposal_from_normalized(world: Any, normalized: dict) -> Proposal:
         },
         scope=refs,
     )
-

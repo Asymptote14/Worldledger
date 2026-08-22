@@ -6082,25 +6082,13 @@ class TestItemCausalityCarHitsPlayer(unittest.TestCase):
         summaries = evolution.commit_entity_event(w, self._crash_proposal())
         self.assertFalse(any("驳回" in s for s in summaries), summaries)
 
-    def _state_runtime(self, world):
-        try:
-            from worldledger.state_runtime_adapter import runtime_from_world
-        except ImportError as exc:
-            self.skipTest(str(exc))
-        return runtime_from_world(world)
-
     def test_collision_bridges_to_state_runtime_before_world_commit(self):
-        """Proposal -> prepare -> one WorldLedger commit; no second ledger."""
+        """Fresh projection -> prepare -> one WorldLedger commit."""
         w = self._world()
-        runtime = self._state_runtime(w)
-        def forbidden_commit(_prepared):
-            self.fail("validator mode must not commit a second event log")
-        runtime.commit_prepared = forbidden_commit
         before = len(w.events)
         summaries = evolution.commit_entity_event(
-            w, self._crash_proposal(), state_runtime=runtime)
+            w, self._crash_proposal(), use_state_runtime=True)
         self.assertFalse(any("驳回" in s for s in summaries), summaries)
-        self.assertEqual(len(runtime.events), 0)
         self.assertEqual(len(w.events) - before, 4)  # root + three projections
         root = w.events[before]
         audit = root.payload["state_runtime"]
@@ -6111,25 +6099,34 @@ class TestItemCausalityCarHitsPlayer(unittest.TestCase):
         self.assertEqual(audit["mode"], "validator")
         self.assertEqual(set(audit["entity_ids"]), {
             "item:i-car", "player", "scene:s-alley"})
-        self.assertEqual(runtime.entities["item:i-car"].state["note"],
-                         "行驶中，速度很快")
-        self.assertIs(runtime.entities["player"].state["can_act"], True)
 
     def test_state_runtime_rejection_writes_neither_side(self):
-        """A stale generic projection rejects before either ledger changes."""
+        """Current projection rejects before either ledger changes."""
         w = self._world()
-        runtime = self._state_runtime(w)
-        runtime.entities["player"].state["location"] = "s-cafe"
+        w.player["location"] = "s-cafe"
         before_events = len(w.events)
         before_note = self._car(w)["note"]
         summaries = evolution.commit_entity_event(
-            w, self._crash_proposal(), state_runtime=runtime)
-        self.assertTrue(any("StateRuntime" in s for s in summaries), summaries)
+            w, self._crash_proposal(), use_state_runtime=True)
+        self.assertTrue(any("驳回" in s for s in summaries), summaries)
         self.assertEqual(len(w.events), before_events)
         self.assertEqual(self._car(w)["note"], before_note)
         self.assertNotIn("can_act", w.player)
         self.assertFalse(w.scenes["s-alley"].state_facts)
-        self.assertEqual(runtime.events, [])
+
+    def test_state_runtime_projection_is_rebuilt_after_world_changes(self):
+        """A later validation reads current WorldLedger state, not old state."""
+        from worldledger.state_runtime_adapter import (
+            prepare_current_world_event,
+        )
+        w = self._world()
+        normalized, errors = evolution._normalize_entity_event(
+            w, self._crash_proposal())
+        self.assertEqual(errors, [])
+        prepare_current_world_event(w, normalized)
+        w.player["location"] = "s-cafe"
+        with self.assertRaises(ValueError):
+            prepare_current_world_event(w, normalized)
 
 
 class TestDemoRuns(unittest.TestCase):

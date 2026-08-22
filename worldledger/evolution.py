@@ -871,23 +871,22 @@ def _apply_entity_event(world: World, normalized: dict) -> tuple[list[str], list
 
 
 def commit_entity_event(world: World, proposal: dict, *,
-                        state_runtime=None) -> list[str]:
+                        use_state_runtime: bool = False) -> list[str]:
     """原子提交一个多实体事实及其后果；预演失败时真实世界零写入。
 
-    When ``state_runtime`` is supplied, the normalized event is first checked
-    by the optional generic runtime.  ``StateRuntime`` is deliberately used as
-    a side-effect-free validator here; WorldLedger remains the only committed
-    state and event log, avoiding two independently advancing ledgers.
+    When ``use_state_runtime`` is true, the normalized event is checked against
+    a fresh projection of the current world by the optional generic runtime.
+    The projection is discarded after ``prepare()``; WorldLedger remains the
+    only committed state and event log.
     """
     normalized, errors = _normalize_entity_event(world, proposal)
     if errors:
         return [f"驳回多实体事件：{error}" for error in errors]
     prepared_runtime_event = None
-    if state_runtime is not None:
+    if use_state_runtime:
         try:
-            from .state_runtime_adapter import proposal_from_normalized
-            runtime_proposal = proposal_from_normalized(world, normalized)
-            prepared_runtime_event = state_runtime.prepare(runtime_proposal)
+            from .state_runtime_adapter import prepare_current_world_event
+            prepared_runtime_event = prepare_current_world_event(world, normalized)
         except (ImportError, ValueError) as exc:
             return [f"驳回多实体事件：StateRuntime 校验失败：{exc}"]
     shadow = deepcopy(world)

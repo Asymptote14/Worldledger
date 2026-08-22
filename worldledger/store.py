@@ -370,7 +370,8 @@ def target_snapshot(world: "World", resolved: str) -> str | None:
 
 
 def scene_changes(world: "World", scene_id: str, since_turn: int,
-                  limit: int = 5, *, after_index: int | None = None) -> list[dict]:
+                  limit: int = 5, *, after_index: int | None = None,
+                  include_index: bool = False) -> list[dict]:
     """重返场景视图：从事件账本机械导出 since_turn 以来的事实变化。
 
     零 LLM、零编造——每条变化就是账本里的事件原文，
@@ -411,13 +412,15 @@ def scene_changes(world: "World", scene_id: str, since_turn: int,
             hit = (params.get("a") in scene.npcs
                    or params.get("b") in scene.npcs)
         if hit:
-            out.append({
+            change = {
                 "event_id": f"{e.turn}:{idx}",
-                "_event_index": idx,
                 "kind": e.kind,
                 "fact": e.summary,
                 "cause": e.cause,
-            })
+            }
+            if include_index:
+                change["_event_index"] = idx
+            out.append(change)
             if len(out) >= limit:
                 break  # 已凑齐最近 limit 条：从尾部扫，天然是最新的
     return out if after_index is not None else list(reversed(out))

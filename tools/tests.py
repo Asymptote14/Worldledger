@@ -4298,6 +4298,7 @@ class TestCausalWorld(unittest.TestCase):
         self.assertIn("item_changed", kinds)
         self.assertIn("npc_interaction", kinds)
         self.assertIn("npc_moved", kinds)  # 谁来过/离开
+        self.assertFalse(any("_event_index" in change for change in changes))
         self.assertLessEqual(len(changes), 4)  # 有界
 
     def test_goal_targets_canonicalized_at_write(self):

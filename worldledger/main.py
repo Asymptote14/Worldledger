@@ -75,7 +75,7 @@ def _print_scene_changes(world: World, scene_id: str) -> None:
             if event.turn <= since:
                 after_index = index
     changes = scene_changes(world, scene_id, since, limit=4,
-                            after_index=after_index)
+                            after_index=after_index, include_index=True)
     if changes:
         print("\n你不在的时候，这里变了：")
         for c in changes:

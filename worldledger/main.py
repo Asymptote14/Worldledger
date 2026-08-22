@@ -63,13 +63,29 @@ def _print_scene_changes(world: World, scene_id: str) -> None:
     不进 social，不进模型载荷。
     """
     seen = world.player.setdefault("seen", {})
+    seen_indices = world.player.setdefault("seen_event_indices", {})
     since = int(seen.get(scene_id, 0))
-    changes = scene_changes(world, scene_id, since, limit=4)
+    if scene_id in seen_indices:
+        after_index = int(seen_indices[scene_id])
+    else:
+        # Old saves only have a turn cursor. Convert it to the last event
+        # known at that turn; new reads then use the lossless index cursor.
+        after_index = -1
+        for index, event in enumerate(world.events):
+            if event.turn <= since:
+                after_index = index
+    changes = scene_changes(world, scene_id, since, limit=4,
+                            after_index=after_index)
     if changes:
         print("\n你不在的时候，这里变了：")
         for c in changes:
             print(f"  · {c['fact']}（#{c['event_id']}｜因：{c['cause']}）")
-    seen[scene_id] = world.turn
+    if changes:
+        seen_indices[scene_id] = changes[-1]["_event_index"]
+        seen[scene_id] = world.events[changes[-1]["_event_index"]].turn
+    else:
+        seen_indices[scene_id] = len(world.events) - 1
+        seen[scene_id] = world.turn
 
 
 def _look(world: World) -> str:

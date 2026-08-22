@@ -4327,6 +4327,33 @@ class TestCausalWorld(unittest.TestCase):
         self.assertIn("变化4", notes[0])    # 窗口起点
         self.assertNotIn("变化0", " ".join(notes))  # 最早的被正确跳过
 
+    def test_scene_seen_cursor_reads_limited_changes_without_skipping(self):
+        """回读分页：6 条待读、每次 4 条，分两次完整消费。"""
+        llm, w = self._world()
+        stamp = w.turn
+        for i in range(6):
+            emit(w, "npc_interaction", {
+                "npc": "n-arin", "target": "n-man",
+                "line": f"对话{i}", "location": "s-station",
+            }, cause="测试")
+        from worldledger import main as main_mod
+        with redirect_stdout(StringIO()):
+            main_mod._print_scene_changes(w, "s-station")
+        first_cursor = w.player["seen_event_indices"]["s-station"]
+        self.assertEqual(
+            w.player["seen"]["s-station"],
+            w.events[first_cursor].turn,
+        )
+        self.assertLess(first_cursor, len(w.events) - 1)
+        with redirect_stdout(StringIO()):
+            main_mod._print_scene_changes(w, "s-station")
+        second_cursor = w.player["seen_event_indices"]["s-station"]
+        self.assertEqual(second_cursor, len(w.events) - 1)
+        self.assertEqual(second_cursor - first_cursor, 2)
+        with redirect_stdout(StringIO()) as output:
+            main_mod._print_scene_changes(w, "s-station")
+        self.assertEqual(output.getvalue(), "")
+
     def test_scene_seen_progress_lives_in_player_not_social(self):
         """阅读进度是玩家状态，不进 social / 模型载荷。"""
         llm, w = self._world()

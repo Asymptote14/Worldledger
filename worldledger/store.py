@@ -370,7 +370,7 @@ def target_snapshot(world: "World", resolved: str) -> str | None:
 
 
 def scene_changes(world: "World", scene_id: str, since_turn: int,
-                  limit: int = 5) -> list[dict]:
+                  limit: int = 5, *, after_index: int | None = None) -> list[dict]:
     """重返场景视图：从事件账本机械导出 since_turn 以来的事实变化。
 
     零 LLM、零编造——每条变化就是账本里的事件原文，
@@ -381,9 +381,15 @@ def scene_changes(world: "World", scene_id: str, since_turn: int,
     if scene is None or limit <= 0:
         return []
     out: list[dict] = []
-    for idx in range(len(world.events) - 1, -1, -1):
+    if after_index is not None:
+        # Player catch-up consumes the append-only log in order. This is
+        # separate from the default "latest window" query used by audits.
+        indices = range(max(-1, after_index) + 1, len(world.events))
+    else:
+        indices = range(len(world.events) - 1, -1, -1)
+    for idx in indices:
         e = world.events[idx]
-        if e.turn <= since_turn:
+        if after_index is None and e.turn <= since_turn:
             break  # 再往前全是 since 之前的事件
         params = e.payload.get("event_params", {})
         hit = False
@@ -407,13 +413,14 @@ def scene_changes(world: "World", scene_id: str, since_turn: int,
         if hit:
             out.append({
                 "event_id": f"{e.turn}:{idx}",
+                "_event_index": idx,
                 "kind": e.kind,
                 "fact": e.summary,
                 "cause": e.cause,
             })
             if len(out) >= limit:
                 break  # 已凑齐最近 limit 条：从尾部扫，天然是最新的
-    return list(reversed(out))
+    return out if after_index is not None else list(reversed(out))
 
 
 # ---------------- 事件日志 ----------------

@@ -4,6 +4,7 @@
 """
 from __future__ import annotations
 
+import os
 import sys
 
 from . import cards, evolution, interpreter, worldgen
@@ -20,6 +21,12 @@ WELCOME = """\
   输入「帮助」查看命令
 ══════════════════════════════════════════
 """
+
+
+def _state_runtime_enabled() -> bool:
+    """Read the optional generic validation switch for the CLI heartbeat."""
+    value = os.environ.get("WORLDLEDGER_VALIDATE_WITH_STATE_RUNTIME", "")
+    return value.strip().lower() in {"1", "true", "yes", "on"}
 
 HELP = """\
 创建世界 <描述>   一句话生成世界（场景 + NPC + 法则）
@@ -416,7 +423,9 @@ def repl(llm, universe: Universe):
         # 世界心跳：你不在的场景也在过日子（事件日志继续生长）
         try:
             if universe.current and universe.worlds:
-                evolution.world_pulse(llm, universe.here)
+                evolution.world_pulse(
+                    llm, universe.here,
+                    use_state_runtime=_state_runtime_enabled())
         except Exception as e:
             print(f"心跳出错：{e}")
 

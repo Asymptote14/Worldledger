@@ -78,6 +78,14 @@ $env:WORLDLEDGER_SAVE_PATH="D:\worldledger-data\universe.json"
 python -m worldledger.main
 ```
 
+需要时可以为 CLI 心跳开启 State Runtime 的可选校验。默认关闭，且不会改变
+WorldLedger 唯一账本的提交方式：
+
+```powershell
+$env:WORLDLEDGER_VALIDATE_WITH_STATE_RUNTIME="1"
+python -m worldledger.main
+```
+
 ## 使用真实模型
 
 通过环境变量配置 OpenAI 兼容接口，不要把密钥写进代码或提交配置文件：
@@ -105,7 +113,7 @@ python -m tools.demo
 
 ## 当前验证范围
 
-- 仓库包含 328 项本地回归测试，覆盖存档往返、引用完整性、知识边界、行动时序、记忆归属、物品转移和多实体事件等机制。
+- 仓库包含 329 项本地回归测试，覆盖存档往返、引用完整性、知识边界、行动时序、记忆归属、物品转移和多实体事件等机制。
 - Mock 模式是确定性的，适合验证引擎纪律和快速体验，不代表真实模型的生成质量。
 - 公开 Pilot 展示了一个原创、低成本、可复现的状态校验案例，但单个样例不能证明跨模型、跨世界的普遍性能。
 - 对照实验应固定模型、预算、玩家输入和评分规则；具体协议见 [`docs/EVALUATION_PROTOCOLS.md`](docs/EVALUATION_PROTOCOLS.md)。

@@ -5,11 +5,13 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from unittest.mock import patch
 
 from worldledger import cards, evolution, history, interpreter, physics, worldgen
 from worldledger.event import (apply_item_patch, emit, event_identity_note,
@@ -6188,6 +6190,22 @@ class TestItemCausalityCarHitsPlayer(unittest.TestCase):
 
 
 class TestDemoRuns(unittest.TestCase):
+    def test_cli_state_runtime_switch_is_opt_in(self):
+        from worldledger import main as main_mod
+        with patch.dict(os.environ, {}, clear=False):
+            os.environ.pop("WORLDLEDGER_VALIDATE_WITH_STATE_RUNTIME", None)
+            self.assertFalse(main_mod._state_runtime_enabled())
+        for value in ("1", "true", "YES", "on"):
+            with self.subTest(value=value), patch.dict(
+                    os.environ,
+                    {"WORLDLEDGER_VALIDATE_WITH_STATE_RUNTIME": value}):
+                self.assertTrue(main_mod._state_runtime_enabled())
+        for value in ("0", "false", "off", "no"):
+            with self.subTest(value=value), patch.dict(
+                    os.environ,
+                    {"WORLDLEDGER_VALIDATE_WITH_STATE_RUNTIME": value}):
+                self.assertFalse(main_mod._state_runtime_enabled())
+
     def test_demo_smoke(self):
         from tools import demo
         # 测试强制 Mock：不烧真实 API，且确定性

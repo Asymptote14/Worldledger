@@ -5961,6 +5961,172 @@ class TestEmergentPlaces(unittest.TestCase):
         self.assertEqual(arin.state.location, "s-cafe")
 
 
+class TestItemCausalityCarHitsPlayer(unittest.TestCase):
+    """最小物品因果回归：行驶中的车撞到玩家。
+
+    验证四件事：
+    1. 车辆、玩家、地点能被同一个多实体事件同时引用；
+    2. 事件提交后，车辆状态、玩家受伤状态、地点痕迹一起改变；
+    3. 缺失实体 / 位置不符 → 整件事拒绝，零部分写入；
+    4. 事件可通过 cause 回放，玩家视角不泄漏内部字段。
+    已知缺口（不扩展引擎）：车辆「速度」只是 note 文本，没有数值
+    属性与前置校验——「速度不满足时拒绝」属于属性层，当前不存在，
+    由 test_speed_is_narrative_not_mechanical 固定当前行为。
+    """
+
+    def _world(self):
+        llm = MockLLM()
+        w = generate_world(llm, "世界1", DESC)
+        ensure_scene(llm, w, "s-alley")
+        w.player["location"] = "s-alley"
+        errs = apply_item_patch(w, {"op": "add", "item": "i-car",
+                                    "name": "面包车",
+                                    "note": "行驶中，速度很快",
+                                    "location": "s-alley"},
+                                cause="测试布置")
+        self.assertEqual(errs, [])
+        return w
+
+    def _crash_proposal(self, car_id="i-car"):
+        return {
+            "title": "行驶中的车撞上了玩家",
+            "detail": "面包车刹不住，车头撞上玩家的小腿，"
+                      "车轮在湿路面上拖出两道痕迹。",
+            "location": "s-alley",
+            "intensity": 0.9,
+            "participants": [f"item:{car_id}", "player", "scene:s-alley"],
+            "item_patches": [{"op": "change", "item": car_id,
+                              "location": "s-alley",
+                              "note": "撞停，车头凹陷"}],
+            "actor_patches": [{"target": "player", "can_act": False,
+                               "condition": "被车撞伤，小腿剧痛"}],
+            "scene_state_patches": [{"scene": "scene:s-alley", "op": "add",
+                                     "fact": "tire-marks",
+                                     "text": "路面留下两道轮胎擦痕",
+                                     "duration_days": 1}],
+        }
+
+    def _car(self, w):
+        return next(i for s in w.scenes.values() for i in s.items
+                    if i["id"] == "i-car")
+
+    def test_one_event_references_car_player_place(self):
+        """验证 1：车辆、玩家、地点被同一个事件同时引用。"""
+        w = self._world()
+        n0 = len(w.events)
+        summaries = evolution.commit_entity_event(w, self._crash_proposal())
+        self.assertFalse(any("驳回" in s for s in summaries), summaries)
+        root = w.events[n0]
+        self.assertEqual(root.kind, "world_event")
+        self.assertEqual(root.cause, "多实体事件")
+        params = root.payload["event_params"]
+        self.assertEqual(set(params["refs"]),
+                         {"item:i-car", "player", "scene:s-alley"})
+
+    def test_consequences_all_land_together(self):
+        """验证 2：车辆状态、玩家受伤、地点痕迹一起改变。"""
+        w = self._world()
+        evolution.commit_entity_event(w, self._crash_proposal())
+        self.assertIn("撞停", self._car(w)["note"])          # 车辆
+        self.assertIs(w.player.get("can_act"), False)         # 玩家受伤
+        self.assertIn("被车撞伤", w.player.get("condition", ""))
+        alley = w.scenes["s-alley"]
+        self.assertTrue(any(f.get("id") == "tire-marks"
+                            for f in alley.state_facts))      # 地点痕迹
+
+    def test_missing_entity_rejected_without_partial_state(self):
+        """验证 3a：缺少实体 → 整件事拒绝，零部分写入。"""
+        w = self._world()
+        proposal = self._crash_proposal(car_id="i-ghost-car")
+        n0 = len(w.events)
+        note_before = self._car(w)["note"]
+        summaries = evolution.commit_entity_event(w, proposal)
+        self.assertTrue(any("驳回" in s for s in summaries), summaries)
+        self.assertEqual(len(w.events), n0)                    # 无新事件
+        self.assertEqual(self._car(w)["note"], note_before)    # 车辆未变
+        self.assertNotIn("can_act", w.player)                  # 玩家未变
+        self.assertFalse(w.scenes["s-alley"].state_facts)      # 场景未变
+
+    def test_wrong_location_rejected_without_partial_state(self):
+        """验证 3b：位置不符（玩家不在场）→ 整件事拒绝。"""
+        w = self._world()
+        w.player["location"] = "s-cafe"
+        n0 = len(w.events)
+        summaries = evolution.commit_entity_event(w, self._crash_proposal())
+        self.assertTrue(any("驳回" in s for s in summaries), summaries)
+        self.assertEqual(len(w.events), n0)
+        self.assertNotIn("can_act", w.player)
+        self.assertFalse(w.scenes["s-alley"].state_facts)
+
+    def test_replayable_and_player_view_clean(self):
+        """验证 4：cause 回放 + 玩家视角不泄漏内部字段。"""
+        w = self._world()
+        evolution.commit_entity_event(w, self._crash_proposal())
+        root = next(e for e in reversed(w.events)
+                    if e.kind == "world_event"
+                    and e.cause == "多实体事件")
+        cons = root.payload.get("consequences", {})
+        self.assertTrue(cons["item_patches"])       # 后果随根事件存档
+        self.assertTrue(cons["actor_patches"])
+        self.assertTrue(cons["scene_state_patches"])
+        for bad in ("refs", "actor_patches", "can_act", "consequences",
+                    "scene_state_patches", "item_patches"):
+            self.assertNotIn(bad, root.summary)     # 渲染层无内部字段
+        self.assertIn("车", root.summary)
+
+    def test_speed_is_narrative_not_mechanical(self):
+        """能力缺口固定：速度只是 note 文本，引擎不校验速度前置。
+        断言当前行为（提交成功），防止将来误以为引擎校验了速度。"""
+        w = self._world()
+        self._car(w)["note"] = "停在路边，熄火状态"  # 速度不满足
+        summaries = evolution.commit_entity_event(w, self._crash_proposal())
+        self.assertFalse(any("驳回" in s for s in summaries), summaries)
+
+    def _state_runtime(self, world):
+        try:
+            from worldledger.state_runtime_adapter import runtime_from_world
+        except ImportError as exc:
+            self.skipTest(str(exc))
+        return runtime_from_world(world)
+
+    def test_collision_bridges_to_state_runtime_before_world_commit(self):
+        """Proposal -> prepare -> one WorldLedger commit -> runtime commit."""
+        w = self._world()
+        runtime = self._state_runtime(w)
+        before = len(w.events)
+        summaries = evolution.commit_entity_event(
+            w, self._crash_proposal(), state_runtime=runtime)
+        self.assertFalse(any("驳回" in s for s in summaries), summaries)
+        self.assertEqual(len(runtime.events), 1)
+        self.assertEqual(len(w.events) - before, 4)  # root + three projections
+        root = w.events[before]
+        audit = root.payload["state_runtime"]
+        self.assertEqual(audit["status"], "committed")
+        self.assertTrue(audit["proposal_created"])
+        self.assertEqual(audit["validation"], "passed")
+        self.assertTrue(audit["prepared"])
+        self.assertEqual(set(audit["entity_ids"]), {
+            "item:i-car", "player", "scene:s-alley"})
+        self.assertIn("撞停", runtime.entities["item:i-car"].state["note"])
+        self.assertIs(runtime.entities["player"].state["can_act"], False)
+
+    def test_state_runtime_rejection_writes_neither_side(self):
+        """A stale generic projection rejects before either ledger changes."""
+        w = self._world()
+        runtime = self._state_runtime(w)
+        runtime.entities["player"].state["location"] = "s-cafe"
+        before_events = len(w.events)
+        before_note = self._car(w)["note"]
+        summaries = evolution.commit_entity_event(
+            w, self._crash_proposal(), state_runtime=runtime)
+        self.assertTrue(any("StateRuntime" in s for s in summaries), summaries)
+        self.assertEqual(len(w.events), before_events)
+        self.assertEqual(self._car(w)["note"], before_note)
+        self.assertNotIn("can_act", w.player)
+        self.assertFalse(w.scenes["s-alley"].state_facts)
+        self.assertEqual(runtime.events, [])
+
+
 class TestDemoRuns(unittest.TestCase):
     def test_demo_smoke(self):
         from tools import demo
